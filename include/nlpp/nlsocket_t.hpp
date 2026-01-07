@@ -72,7 +72,7 @@ public:
   /// @brief Finalize and transmit a Netlink message.
   /// @param[in] msg Netlink message to send.
   /// @throws `std::runtime_error` When `nl_send_auto()` fails.
-  void send_auto(nlmsg_t& msg);
+  void send_auto(nlmsg_t const& msg);
 
   /// @brief Receive a set of messages.
   /// @param[in] cb Set of callbacks to control the behaviour.

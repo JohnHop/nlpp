@@ -14,7 +14,8 @@ nlmsg_t::nlmsg_t()
 : msgPtr_{nlmsg_alloc()}
 {
   if(!msgPtr_) {
-    throw std::system_error{ENOMEM, std::system_category(), "unable to allocate netlink message"};
+    throw std::system_error{ENOMEM, std::system_category(), 
+      "unable to allocate netlink message"};
   }
 }
 

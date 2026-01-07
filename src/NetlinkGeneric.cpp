@@ -9,7 +9,6 @@
 #include <linux/nl80211.h>
 
 #include <stdexcept>
-#include <string_view>
 #include <system_error>
 #include <cstdarg>
 
@@ -42,8 +41,7 @@ dev_info_t NetlinkGeneric::get_interface(if_index_t ifindex)
   nlmsg_t msg{this->nl80211_id, nl80211_commands::NL80211_CMD_GET_INTERFACE};
   msg.put_attr({nl80211_attrs::NL80211_ATTR_IFINDEX, ifindex.get()});
 
-  this->send_msg(
-    std::move(msg), NetlinkGeneric::get_interface_handler, &interface_info);
+  this->send_msg(msg, NetlinkGeneric::get_interface_handler, &interface_info);
   
   return interface_info.at(ifindex.get());
 }
@@ -56,8 +54,7 @@ std::map<uint32_t,dev_info_t> NetlinkGeneric::get_list_interfaces()
   nlmsg_t msg{
     this->nl80211_id, nl80211_commands::NL80211_CMD_GET_INTERFACE, 768};
 
-  this->send_msg(std::move(msg),
-    NetlinkGeneric::get_interface_handler, &result);
+  this->send_msg(msg, NetlinkGeneric::get_interface_handler, &result);
 
   return result;
 }
@@ -73,29 +70,26 @@ dev_capability_t NetlinkGeneric::get_phy(wiphy_index_t phy_index)
   nlmsg_t msg{this->nl80211_id,
     nl80211_commands::NL80211_CMD_GET_PROTOCOL_FEATURES};
 
-  this->send_msg(std::move(msg),
-    &NetlinkGeneric::get_feature_handler, &nl80211_has_split_wiphy);
+  this->send_msg(msg, &NetlinkGeneric::get_feature_handler, 
+    &nl80211_has_split_wiphy);
 
   // then, send `NL80211_CMD_GET_WIPHY` with appropriate flags
   msg = nlmsg_t{this->nl80211_id, nl80211_commands::NL80211_CMD_GET_WIPHY};
 
-  msg.put_attr(
-    {NL80211_ATTR_WIPHY, static_cast<uint32_t>(phy_index.get())}
-  );
+  msg.put_attr({NL80211_ATTR_WIPHY, static_cast<uint32_t>(phy_index.get())} );
 
   if(nl80211_has_split_wiphy) {
     msg.put_flag(NL80211_ATTR_SPLIT_WIPHY_DUMP);
     msg.nlmsg_hdr()->nlmsg_flags |= NLM_F_DUMP;
   }
 
-  this->send_msg(std::move(msg),
-    &NetlinkGeneric::get_phy_handler, &result);
+  this->send_msg(msg, &NetlinkGeneric::get_phy_handler, &result);
 
   return result.at(phy_index.get());
 }
 
 
-std::map<uint32_t,dev_capability_t> NetlinkGeneric::get_list_phy()
+std::map<uint32_t,dev_capability_t> NetlinkGeneric::get_list_phys()
 {
   std::map<uint32_t,dev_capability_t> result;
 
@@ -105,7 +99,7 @@ std::map<uint32_t,dev_capability_t> NetlinkGeneric::get_list_phy()
   nlmsg_t msg{this->nl80211_id,
     nl80211_commands::NL80211_CMD_GET_PROTOCOL_FEATURES};
 
-  this->send_msg(std::move(msg),
+  this->send_msg(msg,
     &NetlinkGeneric::get_feature_handler, &nl80211_has_split_wiphy);
 
   // then, send `NL80211_CMD_GET_WIPHY` with appropriate flags
@@ -123,22 +117,22 @@ std::map<uint32_t,dev_capability_t> NetlinkGeneric::get_list_phy()
 }
 
 
-void NetlinkGeneric::set_if_type(std::string_view ifname, if_type_e type)
+void NetlinkGeneric::set_if_type(std::string const& ifname, if_type_e type)
 {
-  uint32_t ifindex = if_nametoindex(ifname.data());
+  uint32_t const ifindex = if_nametoindex(ifname.data());
 
   nlmsg_t msg{this->nl80211_id, nl80211_commands::NL80211_CMD_SET_INTERFACE};
   msg.put_attr(
     nlattr_t{nl80211_attrs::NL80211_ATTR_IFINDEX, ifindex},
     nlattr_t{nl80211_attrs::NL80211_ATTR_IFTYPE, static_cast<uint32_t>(type)} );
 
-  this->send_msg(std::move(msg));
+  this->send_msg(msg);
 }
 
 
-void NetlinkGeneric::set_if_channel(std::string_view ifname, freq_chan_t chan)
+void NetlinkGeneric::set_if_channel(std::string const& ifname, freq_chan_t chan)
 {
-  uint32_t ifindex = if_nametoindex(ifname.data());
+  uint32_t const ifindex = if_nametoindex(ifname.data());
 
   nlmsg_t msg{this->nl80211_id, nl80211_commands::NL80211_CMD_SET_WIPHY};
   msg.put_attr(
@@ -154,11 +148,10 @@ void NetlinkGeneric::set_if_channel(std::string_view ifname, freq_chan_t chan)
 }
 
 
-// FIXME: why pass by copy? Use reference!
-void NetlinkGeneric::send_msg(nlmsg_t msg, nl_recvmsg_msg_cb_t fun, void* arg)
+void NetlinkGeneric::send_msg(nlmsg_t const& msg, nl_recvmsg_msg_cb_t fun, void* arg)
 {
   nlcb_t cb{NL_CB_DEFAULT};
-  nlcb_t s_cb{NL_CB_DEFAULT};
+  nlcb_t s_cb{NL_CB_DEFAULT}; // send cb
 
   // put handler
   if(fun) {
@@ -266,7 +259,6 @@ int NetlinkGeneric::get_feature_handler(struct nl_msg *msg, void *arg) noexcept
 }
 
 
-/// @brief TODO
 int NetlinkGeneric::get_phy_handler(struct nl_msg* msg, void* arg) noexcept
 {
   struct nlattr* tb_msg[NL80211_ATTR_MAX + 1];

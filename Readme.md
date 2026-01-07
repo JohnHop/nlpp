@@ -3,9 +3,6 @@ This library is a modern C++ wrapper of the well-known [Netlink Protocol Library
 
 The library aims to simplify the access to the Linux kernel interfaces available via the Netlink protocol using a more modern approach.
 
-## Requisites
-A Linux OS (obviously)
-
 ## Library Overview
 
 ![alt text](doc/classes.png "Classes Diagram")

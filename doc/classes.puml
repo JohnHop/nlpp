@@ -9,6 +9,7 @@ package "High Level Classes" as HLC <<Rectangle>> {
     get_interface()
     get_list_interfaces()
     get_phy()
+    get_list_phys()
     set_if_type()
     set_if_channel()
   }
@@ -37,17 +38,17 @@ package "nlpp Custom Types" as CT <<Rectangle>> {
 
 ' From HLC
 NetlinkGeneric *--> nlsocket_t
-NetlinkGeneric --> nlmsg_t
-NetlinkGeneric --> dev_info_t
-NetlinkGeneric --> dev_capability_t
-NetlinkGeneric --> if_identifier_t
+NetlinkGeneric -.> nlmsg_t
+NetlinkGeneric -.> dev_info_t
+NetlinkGeneric -.> dev_capability_t
+NetlinkGeneric -.> if_identifier_t
 NetlinkRoute *--> nlsocket_t
-NetlinkRoute --> rtnl_link_t
-NetlinkRoute --> if_identifier_t
+NetlinkRoute -.> rtnl_link_t
+NetlinkRoute -.> if_identifier_t
 
 ' From LLC
 nlsocket_t o--> nlcb_t
-nlmsg_t --> nlattr_t
+nlmsg_t .-> nlattr_t
 
 
 @enduml

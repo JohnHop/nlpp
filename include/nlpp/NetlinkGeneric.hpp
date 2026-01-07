@@ -14,7 +14,6 @@
 #include <netlink/genl/ctrl.h>
 #include <netlink/genl/genl.h>
 
-#include <string_view>
 #include <map>
 
 
@@ -65,33 +64,34 @@ public:
 
   /// @brief Get the list phy object.
   /// @return std::map<uint32_t,dev_capability_t> 
-  [[nodiscard]] std::map<uint32_t,dev_capability_t> get_list_phy();
+  [[nodiscard]] std::map<uint32_t,dev_capability_t> get_list_phys();
   
   /// @brief Change the interface type.
   /// @param[in] ifname Interface name.
   /// @param[in] type Interface type/mode to set.
-  /// @pre Link must be down.
+  /// @pre Link must be down (otherwise?).
   /// @note This method corresponds to `iw dev <devname> set type <type>`.
-  void set_if_type(std::string_view ifname, if_type_e type);
+  void set_if_type(std::string const& ifname, if_type_e type);
   
   /// @brief Set the frequency channel.
   /// @param[in] ifname Interface name.
   /// @param[in] channel Channel to set.
   /// @pre Link must be in monitor mode and up.
   /// @note This method corresponds to `iw dev <devname> set channel <channel>`.
-  void set_if_channel(std::string_view ifname, freq_chan_t channel);
+  void set_if_channel(std::string const& ifname, freq_chan_t channel);
 
 private:
+
   /// @brief Send a netlink message.
   /// @param[in] msg Netlink message.
   /// @param[in] fun Optional callback function.
   /// @param[in] arg Optional callback function parameter.
-  /// @note: You can address commands to a device only through his index.
-  void send_msg(nlmsg_t msg, nl_recvmsg_msg_cb_t = {}, void* = {});
+  /// @note You can address commands to a device only through his index.
+  void send_msg(nlmsg_t const& msg, nl_recvmsg_msg_cb_t = {}, void* = {});
 
 // Commands handlers callbacks
 
-  /// @brief Callback to fill a `device_info_t` object.
+  /// @brief Callback to parse a `NL80211_CMD_GET_INTERFACE` response.
   static int get_interface_handler(struct nl_msg* msg, void* arg) noexcept;
 
   /// @brief Callback to parse a `NL80211_CMD_GET_PROTOCOL_FEATURES` response.

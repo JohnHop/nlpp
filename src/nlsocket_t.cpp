@@ -82,7 +82,7 @@ void nlsocket_t::set_cb(nlcb_t cb)
 }
 
 
-void nlsocket_t::send_auto(nlmsg_t& msg)
+void nlsocket_t::send_auto(nlmsg_t const& msg)
 {
   int err = nl_send_auto(socketPtr_, msg.get_pointer());
   if(err < 0) {

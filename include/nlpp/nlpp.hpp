@@ -332,7 +332,7 @@ struct dev_capability_t
   wiphy_index_t wiphy_index;            ///< From `NL80211_ATTR_WIPHY`
   std::string wiphy_name;               ///< From `NL80211_ATTR_WIPHY_NAME`
   std::vector<if_type_e> iftypes;       ///< From `NL80211_ATTR_SUPPORTED_IFTYPES`
-  std::vector<frequency_t> freqs;       ///< From `
+  std::vector<frequency_t> freqs;       ///< From `NL80211_FREQUENCY_ATTR_FREQ`
   std::vector<nl80211_command_e> cmds;  ///< From `NL80211_ATTR_SUPPORTED_COMMANDS`
 
   /// @brief Checks if a interface type is supported by this device.
