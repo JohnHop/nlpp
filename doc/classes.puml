@@ -1,0 +1,53 @@
+@startuml classes
+top to bottom direction
+
+hide empty fields
+hide empty methods
+
+package "High Level Classes" as HLC <<Rectangle>> {
+  class NetlinkGeneric {
+    get_interface()
+    get_list_interfaces()
+    get_phy()
+    set_if_type()
+    set_if_channel()
+  }
+
+  class NetlinkRoute {
+    get_link()
+    link_change()
+  }
+}
+
+package "Low Level Classes" as LLC <<Rectangle>> {
+  class nlsocket_t
+  class nlcb_t
+  class nlmsg_t
+
+  class rtnl_link_t
+  class nlcache_t
+  class nlattr_t
+}
+
+package "nlpp Custom Types" as CT <<Rectangle>> { 
+  class if_identifier_t
+  class dev_info_t
+  class dev_capability_t
+}
+
+' From HLC
+NetlinkGeneric *--> nlsocket_t
+NetlinkGeneric --> nlmsg_t
+NetlinkGeneric --> dev_info_t
+NetlinkGeneric --> dev_capability_t
+NetlinkGeneric --> if_identifier_t
+NetlinkRoute *--> nlsocket_t
+NetlinkRoute --> rtnl_link_t
+NetlinkRoute --> if_identifier_t
+
+' From LLC
+nlsocket_t o--> nlcb_t
+nlmsg_t --> nlattr_t
+
+
+@enduml

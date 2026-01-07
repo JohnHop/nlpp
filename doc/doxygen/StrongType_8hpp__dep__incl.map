@@ -1,0 +1,19 @@
+<map id="include/nlpp/StrongType.hpp" name="include/nlpp/StrongType.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="237,5,442,31"/>
+<area shape="rect" id="Node000002" href="$nlpp_8hpp.html" title=" " alt="" coords="259,79,420,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,44,342,79,337,79,337,44"/>
+<area shape="rect" id="Node000003" href="$NetlinkGeneric_8hpp.html" title=" " alt="" coords="5,247,236,273"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,108,199,126,178,138,159,154,142,176,132,202,124,247,119,246,127,200,138,174,155,150,175,134,197,121,245,103"/>
+<area shape="rect" id="Node000004" href="$NetlinkRoute_8hpp.html" title=" " alt="" coords="439,247,658,273"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="434,101,483,119,506,133,525,150,540,174,549,201,552,247,547,247,543,202,536,176,521,154,502,137,481,124,432,106"/>
+<area shape="rect" id="Node000005" href="$nlsocket__t_8hpp.html" title=" " alt="" coords="169,152,328,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="317,115,272,154,269,150,314,111"/>
+<area shape="rect" id="Node000007" href="$rtnl__link__t_8hpp.html" title=" " alt="" coords="352,152,511,192"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="365,111,411,150,407,154,362,115"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="211,202,139,249,137,245,208,198"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="328,193,509,245,508,250,327,198"/>
+<area shape="rect" id="Node000006" href="$nlcache__t_8hpp.html" title=" " alt="" coords="261,240,415,280"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="280,200,320,238,316,242,277,204"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="470,198,534,245,531,249,467,202"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="402,203,360,242,357,238,399,199"/>
+</map>

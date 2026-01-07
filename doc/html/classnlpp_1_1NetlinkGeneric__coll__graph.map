@@ -1,0 +1,7 @@
+<map id="nlpp::NetlinkGeneric" name="nlpp::NetlinkGeneric">
+<area shape="rect" id="Node000001" title="Utility whose API is mapped to some iw commands." alt="" coords="5,181,160,207"/>
+<area shape="rect" id="Node000002" href="$classnlpp_1_1nlsocket__t.html" title="Simple C++ wrapper around a struct nl_sock with RAII resource management." alt="" coords="21,93,145,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,133,85,181,80,181,80,133"/>
+<area shape="rect" id="Node000003" href="$classnlpp_1_1nlcb__t.html" title="Simple C++ wrapper around a struct nlcb_t with RAII resource management." alt="" coords="34,5,131,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,45,85,93,80,93,80,45"/>
+</map>

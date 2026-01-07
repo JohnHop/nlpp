@@ -1,0 +1,2 @@
+add_executable(NetlinkGenericTest NetlinkGenericTest.cpp)
+target_link_libraries(NetlinkGenericTest nlpp)
