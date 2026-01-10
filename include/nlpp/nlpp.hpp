@@ -19,6 +19,7 @@
 #include <bitset>
 #include <vector>
 #include <variant>
+#include <optional>
 
 
 namespace nlpp {
@@ -303,21 +304,23 @@ enum class nl80211_command_e
 
 
 /// @brief Helper struct containing some device info.
+/// @note Obtained with a NetlinkGeneric::get_interface() call.
 struct dev_info_t
 {
-  if_index_t         if_index{0};     ///< NL80211_ATTR_IFINDEX
-  std::string        if_name;         ///< NL80211_ATTR_IFNAME
-  unsigned long long wdev;            ///< NL80211_ATTR_WDEV
-  std::string        mac_address;     ///< NL80211_ATTR_MAC
-  std::string        ssid;            ///< NL80211_ATTR_SSID
-  if_type_e          type;            ///< NL80211_ATTR_IFTYPE
-  if_index_t         wiphy_index{0};  ///< NL80211_ATTR_WIPHY
-  frequency_t        wiphy_freq{0};   ///< NL80211_ATTR_WIPHY_FREQ
-  int                channel_width;   ///< NL80211_ATTR_CHANNEL_WIDTH
+  if_index_t                  if_index;      ///< NL80211_ATTR_IFINDEX
+  std::string                 if_name;       ///< NL80211_ATTR_IFNAME
+  unsigned long long          wdev;          ///< NL80211_ATTR_WDEV
+  std::string                 mac_address;   ///< NL80211_ATTR_MAC
+  std::string                 ssid;          ///< NL80211_ATTR_SSID
+  if_type_e                   type;          ///< NL80211_ATTR_IFTYPE
+  if_index_t                  wiphy_index;   ///< NL80211_ATTR_WIPHY
+  std::optional<frequency_t>  wiphy_freq;    ///< NL80211_ATTR_WIPHY_FREQ
+  int                         channel_width; ///< NL80211_ATTR_CHANNEL_WIDTH
 
   /// @brief Compares two `dev_info_t`.
   /// @param[in] lhs Left operand to compare.
   /// @param[in] rhs Right operand to compare.
+  /// @returns True only if `lhs` and `rhs` are the same device.
   [[nodiscard]] friend 
   bool operator==(dev_info_t const& lhs, dev_info_t const& rhs) noexcept
   {

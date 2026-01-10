@@ -107,7 +107,7 @@ void nlsocket_t::recvmsgs(nlcb_t& cb)
   }
 
   if(err < 0) {
-    throw std::runtime_error{nl_geterror(err)};
+    throw std::system_error{std::abs(err), std::system_category()};
   }
 }
 

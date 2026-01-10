@@ -21,17 +21,20 @@ public:
   using reference       = value_type &;       ///< Type&
   using const_reference = value_type const &; ///< Type const&
 
+  /// @brief Default ctor.
+  constexpr StrongType() noexcept : value_{} { }
+
   /// @brief Constructs a StrongType from his underlying value.
   /// @param[in] v The value to wrap.
-  constexpr explicit StrongType(Type const &v) : value_{v} {}
+  constexpr explicit StrongType(Type const &v) noexcept : value_{v} {}
 
   /// @brief Get the underlying value.
   /// @returns The reference to underlying value.
-  constexpr reference get() { return value_; }
+  constexpr reference get() noexcept { return value_; }
 
   /// @brief Get the underlying value.
   /// @returns The const reference to underlying value.
-  constexpr const_reference get() const { return value_; }
+  constexpr const_reference get() const noexcept { return value_; }
 
 private:
   /// @brief Enable equally comparision by default.

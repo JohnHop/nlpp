@@ -130,7 +130,7 @@ void NetlinkGeneric::set_if_type(std::string const& ifname, if_type_e type)
 }
 
 
-void NetlinkGeneric::set_if_channel(std::string const& ifname, freq_chan_t chan)
+void NetlinkGeneric::set_if_frequency(std::string const& ifname, frequency_t freq)
 {
   uint32_t const ifindex = if_nametoindex(ifname.data());
 
@@ -139,7 +139,7 @@ void NetlinkGeneric::set_if_channel(std::string const& ifname, freq_chan_t chan)
     nlattr_t{nl80211_attrs::NL80211_ATTR_IFINDEX, ifindex},
     nlattr_t{nl80211_attrs::NL80211_ATTR_IFTYPE, 
       static_cast<uint32_t>(if_type_e::monitor)},
-    nlattr_t{nl80211_attrs::NL80211_ATTR_WIPHY_FREQ, chan2freq(chan).get()},
+    nlattr_t{nl80211_attrs::NL80211_ATTR_WIPHY_FREQ, freq.get()},
     nlattr_t{nl80211_attrs::NL80211_ATTR_WIPHY_CHANNEL_TYPE, 
       static_cast<uint32_t>(nl80211_channel_type::NL80211_CHAN_NO_HT)}
   );
@@ -218,7 +218,8 @@ int NetlinkGeneric::get_interface_handler(struct nl_msg* msg, void* arg) noexcep
   }
   if(tb_msg[NL80211_ATTR_WIPHY_FREQ]) 
   {
-    dev_info.wiphy_freq.get() = nla_get_u32(tb_msg[NL80211_ATTR_WIPHY_FREQ]);
+    dev_info.wiphy_freq 
+      = frequency_t{nla_get_u32(tb_msg[NL80211_ATTR_WIPHY_FREQ])};
 
     if(tb_msg[NL80211_ATTR_CHANNEL_WIDTH]) {
       dev_info.channel_width = 

@@ -69,16 +69,16 @@ public:
   /// @brief Change the interface type.
   /// @param[in] ifname Interface name.
   /// @param[in] type Interface type/mode to set.
-  /// @pre Link must be down (otherwise?).
+  /// @pre Link must be put down (otherwise it throws resource busy).
   /// @note This method corresponds to `iw dev <devname> set type <type>`.
   void set_if_type(std::string const& ifname, if_type_e type);
   
   /// @brief Set the frequency channel.
   /// @param[in] ifname Interface name.
-  /// @param[in] channel Channel to set.
-  /// @pre Link must be in monitor mode and up.
+  /// @param[in] freq Frequency to set.
+  /// @pre Link must be in monitor mode and up (oyherwise throws resource busy).
   /// @note This method corresponds to `iw dev <devname> set channel <channel>`.
-  void set_if_channel(std::string const& ifname, freq_chan_t channel);
+  void set_if_frequency(std::string const& ifname, frequency_t freq);
 
 private:
 

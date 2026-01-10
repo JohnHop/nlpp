@@ -20,7 +20,7 @@
  */
 class WifiDevice
 {
-  nlpp::if_index_t     ifindex_{0}; // device index
+  nlpp::if_index_t     ifindex_;    // device index
   nlpp::NetlinkRoute   nlroute_;    // connection to rtnl subsystem
   nlpp::NetlinkGeneric nlgeneric_;  // connection to genl subsystem
 
@@ -42,8 +42,8 @@ public:
   /// @brief Retrieve the interface type from a `rtnl_link_t` object and returns it.
   [[nodiscard]] nlpp::if_type_e get_type();
 
-  /// @brief Retrieve the frequency channel.
-  [[nodiscard]] nlpp::freq_chan_t get_channel();
+  /// @brief Retrieve the frequency.
+  [[nodiscard]] std::optional<nlpp::frequency_t> get_frequency();
   
   /// @brief Obtain the string representation.
   [[nodiscard]] std::string to_string();
@@ -59,8 +59,10 @@ public:
   /// @brief Set interface type/mode.
   void set_type(nlpp::if_type_e);
   
-  /// @brief Set device frequency channel.
-  void set_channel(nlpp::freq_chan_t);
+  /// @brief Set device frequency.
+  /// @param[in] freq Frequency to set.
+  /// @throw TODO when `freq` is not supported or invalid.
+  void set_frequency(nlpp::frequency_t freq);
 };
 
 

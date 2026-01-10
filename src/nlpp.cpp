@@ -305,11 +305,11 @@ std::string nlpp::to_string(dev_info_t const& dev_info)
 	auto result = std::format("ifname: {}, ifindex: {}, type: {}",
 		dev_info.if_name,
 		dev_info.if_index.get(),
-		::to_string(dev_info.type));
+		to_string(dev_info.type));
 
-	if(dev_info.type == if_type_e::monitor) {
+	if(dev_info.type == if_type_e::monitor && dev_info.wiphy_freq.has_value()) {
 		result += 
-      std::format(", channel: {}", freq2chan(dev_info.wiphy_freq).get());
+      std::format(", channel: {}", freq2chan(dev_info.wiphy_freq.value()).get());
 	}
 
 	return result;
