@@ -11,6 +11,7 @@ package "High Level Classes" as HLC <<Rectangle>> {
     get_phy()
     get_list_phys()
     set_if_type()
+    set_if_frequency()
     set_if_channel()
   }
 

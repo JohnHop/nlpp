@@ -94,7 +94,7 @@ bool dev_capability_t::is_supported(frequency_t freq) const noexcept
 }
 
 
-bool dev_capability_t::is_supported(freq_chan_t chan) const noexcept 
+bool dev_capability_t::is_supported(channel_freq_t chan) const noexcept 
 {
   return
     std::ranges::find(this->freqs, chan, freq2chan) 
@@ -375,7 +375,7 @@ if_index_t phy_lookup(std::string_view phy_name)
 }
 
 
-freq_chan_t nlpp::freq2chan(frequency_t freq) noexcept
+channel_freq_t nlpp::freq2chan(frequency_t freq) noexcept
 {
 	auto f = freq.get();
 	int res = 0;
@@ -391,11 +391,11 @@ freq_chan_t nlpp::freq2chan(frequency_t freq) noexcept
   }
   //? else throw std::invalid_argument
 
-	return freq_chan_t{res};
+	return channel_freq_t{res};
 }
 
 
-frequency_t nlpp::chan2freq(freq_chan_t chan) noexcept
+frequency_t nlpp::chan2freq(channel_freq_t chan) noexcept
 {
 	auto c = chan.get();
 	frequency_t::value_type res = (c + 1000) * 5;

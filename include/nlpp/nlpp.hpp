@@ -36,14 +36,14 @@ using if_index_t = StrongType<uint32_t, struct if_index_tag>;
 using wiphy_index_t = StrongType<uint32_t, struct wiphy_index_tag>;
 
 /// @brief Strong type for frequency channel.
-using freq_chan_t = StrongType<int, struct freq_chan_tag>;
+using channel_freq_t = StrongType<int, struct channel_freq_tag>;
 
 /// @brief Strong type for frequency.
 using frequency_t 
   = StrongType<unsigned int, struct frequency_tag, LessComparable>;
 
 /// @brief A device can be identified by his name or numeric ID.
-using if_identifier_t = std::variant<std::string_view,if_index_t>;
+using if_identifier_t = std::variant<std::string,if_index_t>;
 
 
 /// @brief Netlink protocols used in `nlsocket_t::connect()` call.
@@ -351,7 +351,7 @@ struct dev_capability_t
   /// @brief Checks if a frequency channel is suppoted by this device.
   /// @param[in] chan Frequency channel to check.
   /// @returns true if `chan` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(freq_chan_t chan) const noexcept;
+  [[nodiscard]] bool is_supported(channel_freq_t chan) const noexcept;
   
   /// @brief Check is a nl80211 command is supported by this device.
   /// @param[in] cmd A nl80211 command to check.
@@ -422,13 +422,13 @@ struct dev_capability_t
 /// @param[in] freq A wireless frequency.
 /// @returns The frequency associated with a channel.
 /// @note From iw source code.
-[[nodiscard]] freq_chan_t freq2chan(frequency_t freq) noexcept;
+[[nodiscard]] channel_freq_t freq2chan(frequency_t freq) noexcept;
 
 /// @brief Returns the frequency equivalents to a channel.
 /// @param[in] chan A frequency channel.
 /// @returns The wireless frequency associated with a frequency channel.
 /// @note From `iw` source code.
-[[nodiscard]] frequency_t chan2freq(freq_chan_t chan) noexcept;
+[[nodiscard]] frequency_t chan2freq(channel_freq_t chan) noexcept;
 
 
 };  // end namespace nlpp

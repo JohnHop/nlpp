@@ -148,6 +148,14 @@ void NetlinkGeneric::set_if_frequency(std::string const& ifname, frequency_t fre
 }
 
 
+void NetlinkGeneric::set_if_channel(std::string const& ifname, channel_freq_t chan)
+{
+  auto const freq = nlpp::chan2freq(chan);
+
+  this->set_if_frequency(ifname, freq);
+}
+
+
 void NetlinkGeneric::send_msg(nlmsg_t const& msg, nl_recvmsg_msg_cb_t fun, void* arg)
 {
   nlcb_t cb{NL_CB_DEFAULT};

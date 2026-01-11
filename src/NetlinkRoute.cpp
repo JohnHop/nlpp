@@ -2,7 +2,6 @@
 
 
 #include <stdexcept>
-#include <string_view>
 
 #include <netlink/route/link.h>
 
@@ -26,9 +25,9 @@ rtnl_link_t NetlinkRoute::get_link(if_identifier_t if_identifier)
 
   std::visit([socketPtr=socket_.get_pointer(), &result, &err](auto if_id)
   {
-    struct rtnl_link* linkPtr;
+    struct rtnl_link* linkPtr;  // out argument for `rtnl_link_get_kernel()`
 
-    if constexpr(std::is_same_v<std::string_view,decltype(if_id)>) {
+    if constexpr(std::is_same_v<std::string,decltype(if_id)>) {
       err = rtnl_link_get_kernel(socketPtr, {}, if_id.data(), &linkPtr);
     }
     else if constexpr(std::is_same_v<if_index_t,decltype(if_id)>) {

@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
   auto current_channel = nlpp::freq2chan(interfaceIt->second.wiphy_freq.value());
   auto const max_channel = nlpp::freq2chan(
     phys.at(interfaceIt->second.wiphy_index.get()).freqs.back());
-  auto const new_channel = nlpp::freq_chan_t{
+  auto const new_channel = nlpp::channel_freq_t{
     current_channel != max_channel ? (current_channel.get()+1) : 1};
 
   genl.set_if_frequency(if_name, nlpp::chan2freq(new_channel));

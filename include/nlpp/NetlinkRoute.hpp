@@ -42,6 +42,10 @@ public:
   /// @param[in] flags Optional flags.
   /// @throws `std::runtime_error` when `rtnl_link_change()` call fails.
   void link_change(rtnl_link_t& origin, rtnl_link_t& change, int flags = 0);
+
+  // TODO: wrap rtnl_link_get_kernel()
+  // rtnl_link_t get_kernel(nlsocket_t&, std::string const&)
+  // rtnl_link_t get_kernel(nlsocket_t&, if_index_t);
 };
 
 

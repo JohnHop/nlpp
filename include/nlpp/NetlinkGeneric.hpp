@@ -73,12 +73,19 @@ public:
   /// @note This method corresponds to `iw dev <devname> set type <type>`.
   void set_if_type(std::string const& ifname, if_type_e type);
   
-  /// @brief Set the frequency channel.
+  /// @brief Set the frequency.
   /// @param[in] ifname Interface name.
   /// @param[in] freq Frequency to set.
   /// @pre Link must be in monitor mode and up (oyherwise throws resource busy).
-  /// @note This method corresponds to `iw dev <devname> set channel <channel>`.
+  /// @note This method corresponds to `iw dev <devname> set freq <freq>`.
   void set_if_frequency(std::string const& ifname, frequency_t freq);
+
+  /// @brief Set the channel frequency.
+  /// @param[in] ifname Interface name.
+  /// @param[in] chan Channel frequency to set.
+  /// @pre Link must be in monitor mode and up (oyherwise throws resource busy).
+  /// @note This method corresponds to `iw dev <devname> set channel <channel>`.
+  void set_if_channel(std::string const& ifname, channel_freq_t freq);
 
 private:
 
