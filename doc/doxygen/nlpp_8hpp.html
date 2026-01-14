@@ -91,7 +91,7 @@ $(function() {
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;bitset&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;variant&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for nlpp.hpp:</div>
 <div class="dyncontent">
@@ -116,8 +116,8 @@ Include dependency graph for nlpp.hpp:</div>
 <area shape="poly" title=" " alt="" coords="702,28,870,75,869,81,701,33"/>
 <area shape="rect" title=" " alt="" coords="966,79,1029,104"/>
 <area shape="poly" title=" " alt="" coords="722,28,953,76,952,81,721,33"/>
-<area shape="rect" title=" " alt="" coords="1053,79,1121,104"/>
-<area shape="poly" title=" " alt="" coords="743,27,878,47,1040,76,1039,81,877,52,742,32"/>
+<area shape="rect" title=" " alt="" coords="1053,79,1128,104"/>
+<area shape="poly" title=" " alt="" coords="742,28,878,48,1040,76,1039,81,877,53,742,33"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -166,18 +166,14 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::if_index_t</b>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::wiphy_index_t</b> = <a class="el" href="classnlpp_1_1StrongType.html">StrongType</a>&lt; uint32_t, struct wiphy_index_tag &gt;</td></tr>
 <tr class="memdesc:a4a0165b93b53e26920ecd842ba0e518a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strong type for a wiphy index. <br /></td></tr>
 <tr class="separator:a4a0165b93b53e26920ecd842ba0e518a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc275b033511f49e784446d6ece5bdd9" id="r_adc275b033511f49e784446d6ece5bdd9"><td class="memItemLeft" align="right" valign="top"><a id="adc275b033511f49e784446d6ece5bdd9" name="adc275b033511f49e784446d6ece5bdd9"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::freq_chan_t</b> = <a class="el" href="classnlpp_1_1StrongType.html">StrongType</a>&lt; int, struct freq_chan_tag &gt;</td></tr>
-<tr class="memdesc:adc275b033511f49e784446d6ece5bdd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strong type for frequency channel. <br /></td></tr>
-<tr class="separator:adc275b033511f49e784446d6ece5bdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8e61caf082dcf2e1314f8f4908e782" id="r_a3f8e61caf082dcf2e1314f8f4908e782"><td class="memItemLeft" align="right" valign="top"><a id="a3f8e61caf082dcf2e1314f8f4908e782" name="a3f8e61caf082dcf2e1314f8f4908e782"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::channel_freq_t</b> = <a class="el" href="classnlpp_1_1StrongType.html">StrongType</a>&lt; int, struct channel_freq_tag &gt;</td></tr>
+<tr class="memdesc:a3f8e61caf082dcf2e1314f8f4908e782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strong type for frequency channel. <br /></td></tr>
+<tr class="separator:a3f8e61caf082dcf2e1314f8f4908e782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa21105bfbd42c743f95730432c82b64" id="r_aaa21105bfbd42c743f95730432c82b64"><td class="memItemLeft" align="right" valign="top"><a id="aaa21105bfbd42c743f95730432c82b64" name="aaa21105bfbd42c743f95730432c82b64"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::frequency_t</b> = <a class="el" href="classnlpp_1_1StrongType.html">StrongType</a>&lt; unsigned int, struct frequency_tag, <a class="el" href="structnlpp_1_1LessComparable.html">LessComparable</a> &gt;</td></tr>
 <tr class="memdesc:aaa21105bfbd42c743f95730432c82b64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strong type for frequency. <br /></td></tr>
 <tr class="separator:aaa21105bfbd42c743f95730432c82b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a645a89090cc65ce93df0a02df652b1c1" id="r_a645a89090cc65ce93df0a02df652b1c1"><td class="memItemLeft" align="right" valign="top"><a id="a645a89090cc65ce93df0a02df652b1c1" name="a645a89090cc65ce93df0a02df652b1c1"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>nlpp::if_identifier_t</b> = std::variant&lt; std::string_view, <a class="el" href="nlpp_8hpp.html#a1a90d72d36a41f5f202bc7f4725fd853">if_index_t</a> &gt;</td></tr>
-<tr class="memdesc:a645a89090cc65ce93df0a02df652b1c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A device can be identified by his name or numeric ID. <br /></td></tr>
-<tr class="separator:a645a89090cc65ce93df0a02df652b1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -508,12 +504,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a5110bd69507b48fb6a03af60a0da0cb1" id="r_a5110bd69507b48fb6a03af60a0da0cb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nlpp_8hpp.html#a1a90d72d36a41f5f202bc7f4725fd853">if_index_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nlpp_8hpp.html#a5110bd69507b48fb6a03af60a0da0cb1">nlpp::phy_lookup</a> (std::string_view phy_name)</td></tr>
 <tr class="memdesc:a5110bd69507b48fb6a03af60a0da0cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the wiphy index from his name.  <br /></td></tr>
 <tr class="separator:a5110bd69507b48fb6a03af60a0da0cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac14fd9799e6c9034ec1f910cda623a50" id="r_ac14fd9799e6c9034ec1f910cda623a50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nlpp_8hpp.html#adc275b033511f49e784446d6ece5bdd9">freq_chan_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nlpp_8hpp.html#ac14fd9799e6c9034ec1f910cda623a50">nlpp::freq2chan</a> (<a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a> freq) noexcept</td></tr>
-<tr class="memdesc:ac14fd9799e6c9034ec1f910cda623a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a frequency to channel index.  <br /></td></tr>
-<tr class="separator:ac14fd9799e6c9034ec1f910cda623a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0975140035aea57c6998db3399b4324a" id="r_a0975140035aea57c6998db3399b4324a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nlpp_8hpp.html#a0975140035aea57c6998db3399b4324a">nlpp::chan2freq</a> (<a class="el" href="nlpp_8hpp.html#adc275b033511f49e784446d6ece5bdd9">freq_chan_t</a> chan) noexcept</td></tr>
-<tr class="memdesc:a0975140035aea57c6998db3399b4324a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the frequency equivalents to a channel.  <br /></td></tr>
-<tr class="separator:a0975140035aea57c6998db3399b4324a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55692698a536e67b1e97ee50bdd13693" id="r_a55692698a536e67b1e97ee50bdd13693"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nlpp_8hpp.html#a3f8e61caf082dcf2e1314f8f4908e782">channel_freq_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nlpp_8hpp.html#a55692698a536e67b1e97ee50bdd13693">nlpp::freq2chan</a> (<a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a> freq) noexcept</td></tr>
+<tr class="memdesc:a55692698a536e67b1e97ee50bdd13693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a frequency to channel index.  <br /></td></tr>
+<tr class="separator:a55692698a536e67b1e97ee50bdd13693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7fa0e5f6a3bf85f33836036b09a4d3" id="r_add7fa0e5f6a3bf85f33836036b09a4d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nlpp_8hpp.html#add7fa0e5f6a3bf85f33836036b09a4d3">nlpp::chan2freq</a> (<a class="el" href="nlpp_8hpp.html#a3f8e61caf082dcf2e1314f8f4908e782">channel_freq_t</a> chan) noexcept</td></tr>
+<tr class="memdesc:add7fa0e5f6a3bf85f33836036b09a4d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the frequency equivalents to a channel.  <br /></td></tr>
+<tr class="separator:add7fa0e5f6a3bf85f33836036b09a4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains common definitions used across by entities. </p>
@@ -644,8 +640,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0975140035aea57c6998db3399b4324a" name="a0975140035aea57c6998db3399b4324a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0975140035aea57c6998db3399b4324a">&#9670;&#160;</a></span>chan2freq()</h2>
+<a id="add7fa0e5f6a3bf85f33836036b09a4d3" name="add7fa0e5f6a3bf85f33836036b09a4d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7fa0e5f6a3bf85f33836036b09a4d3">&#9670;&#160;</a></span>chan2freq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -656,7 +652,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">frequency_t nlpp::chan2freq </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#adc275b033511f49e784446d6ece5bdd9">freq_chan_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#a3f8e61caf082dcf2e1314f8f4908e782">channel_freq_t</a>&#160;</td>
           <td class="paramname"><em>chan</em></td><td>)</td>
           <td></td>
         </tr>
@@ -680,8 +676,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac14fd9799e6c9034ec1f910cda623a50" name="ac14fd9799e6c9034ec1f910cda623a50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac14fd9799e6c9034ec1f910cda623a50">&#9670;&#160;</a></span>freq2chan()</h2>
+<a id="a55692698a536e67b1e97ee50bdd13693" name="a55692698a536e67b1e97ee50bdd13693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55692698a536e67b1e97ee50bdd13693">&#9670;&#160;</a></span>freq2chan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -690,7 +686,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">freq_chan_t nlpp::freq2chan </td>
+          <td class="memname">channel_freq_t nlpp::freq2chan </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a>&#160;</td>
           <td class="paramname"><em>freq</em></td><td>)</td>

@@ -85,7 +85,7 @@ public:
   /// @param[in] chan Channel frequency to set.
   /// @pre Link must be in monitor mode and up (oyherwise throws resource busy).
   /// @note This method corresponds to `iw dev <devname> set channel <channel>`.
-  void set_if_channel(std::string const& ifname, channel_freq_t freq);
+  void set_if_channel(std::string const& ifname, channel_freq_t chan);
 
 private:
 

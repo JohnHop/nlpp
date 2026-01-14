@@ -100,15 +100,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a84410f87a0e0a907671c717b932eb74f" id="r_a84410f87a0e0a907671c717b932eb74f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnlpp_1_1dev__capability__t.html">dev_capability_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a84410f87a0e0a907671c717b932eb74f">get_phy</a> (<a class="el" href="nlpp_8hpp.html#a4a0165b93b53e26920ecd842ba0e518a">wiphy_index_t</a> phy_index)</td></tr>
 <tr class="memdesc:a84410f87a0e0a907671c717b932eb74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get capabilities for the specified wireless device.  <br /></td></tr>
 <tr class="separator:a84410f87a0e0a907671c717b932eb74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c3660c69d6fc00a3075fc13ba02225f" id="r_a6c3660c69d6fc00a3075fc13ba02225f"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, <a class="el" href="structnlpp_1_1dev__capability__t.html">dev_capability_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a6c3660c69d6fc00a3075fc13ba02225f">get_list_phy</a> ()</td></tr>
-<tr class="memdesc:a6c3660c69d6fc00a3075fc13ba02225f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list phy object.  <br /></td></tr>
-<tr class="separator:a6c3660c69d6fc00a3075fc13ba02225f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75c9745983d97d787da5648e1c1c0665" id="r_a75c9745983d97d787da5648e1c1c0665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a75c9745983d97d787da5648e1c1c0665">set_if_type</a> (std::string_view ifname, <a class="el" href="nlpp_8hpp.html#aede67162c9857b26b175ace387412f60">if_type_e</a> type)</td></tr>
-<tr class="memdesc:a75c9745983d97d787da5648e1c1c0665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the interface type.  <br /></td></tr>
-<tr class="separator:a75c9745983d97d787da5648e1c1c0665"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65ac7a95a9a5c1430a262dabc960bba3" id="r_a65ac7a95a9a5c1430a262dabc960bba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a65ac7a95a9a5c1430a262dabc960bba3">set_if_channel</a> (std::string_view ifname, <a class="el" href="nlpp_8hpp.html#adc275b033511f49e784446d6ece5bdd9">freq_chan_t</a> channel)</td></tr>
-<tr class="memdesc:a65ac7a95a9a5c1430a262dabc960bba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the frequency channel.  <br /></td></tr>
-<tr class="separator:a65ac7a95a9a5c1430a262dabc960bba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab260c5ad35ea2edcb8891f5c3bdb54dd" id="r_ab260c5ad35ea2edcb8891f5c3bdb54dd"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, <a class="el" href="structnlpp_1_1dev__capability__t.html">dev_capability_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#ab260c5ad35ea2edcb8891f5c3bdb54dd">get_list_phys</a> ()</td></tr>
+<tr class="memdesc:ab260c5ad35ea2edcb8891f5c3bdb54dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list phy object.  <br /></td></tr>
+<tr class="separator:ab260c5ad35ea2edcb8891f5c3bdb54dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6664078694c85184b60dc7dccbd34643" id="r_a6664078694c85184b60dc7dccbd34643"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a6664078694c85184b60dc7dccbd34643">set_if_type</a> (std::string const &amp;ifname, <a class="el" href="nlpp_8hpp.html#aede67162c9857b26b175ace387412f60">if_type_e</a> type)</td></tr>
+<tr class="memdesc:a6664078694c85184b60dc7dccbd34643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the interface type.  <br /></td></tr>
+<tr class="separator:a6664078694c85184b60dc7dccbd34643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2972baa2e63ba5f8403aeb7970df4999" id="r_a2972baa2e63ba5f8403aeb7970df4999"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#a2972baa2e63ba5f8403aeb7970df4999">set_if_frequency</a> (std::string const &amp;ifname, <a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a> freq)</td></tr>
+<tr class="memdesc:a2972baa2e63ba5f8403aeb7970df4999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the frequency.  <br /></td></tr>
+<tr class="separator:a2972baa2e63ba5f8403aeb7970df4999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad97979cd6acd670846e86b78dc2c8ad" id="r_aad97979cd6acd670846e86b78dc2c8ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkGeneric.html#aad97979cd6acd670846e86b78dc2c8ad">set_if_channel</a> (std::string const &amp;ifname, <a class="el" href="nlpp_8hpp.html#a3f8e61caf082dcf2e1314f8f4908e782">channel_freq_t</a> chan)</td></tr>
+<tr class="memdesc:aad97979cd6acd670846e86b78dc2c8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the channel frequency.  <br /></td></tr>
+<tr class="separator:aad97979cd6acd670846e86b78dc2c8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility whose API is mapped to some <code>iw</code> commands. </p>
@@ -201,14 +204,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6c3660c69d6fc00a3075fc13ba02225f" name="a6c3660c69d6fc00a3075fc13ba02225f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c3660c69d6fc00a3075fc13ba02225f">&#9670;&#160;</a></span>get_list_phy()</h2>
+<a id="ab260c5ad35ea2edcb8891f5c3bdb54dd" name="ab260c5ad35ea2edcb8891f5c3bdb54dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab260c5ad35ea2edcb8891f5c3bdb54dd">&#9670;&#160;</a></span>get_list_phys()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; uint32_t, <a class="el" href="structnlpp_1_1dev__capability__t.html">dev_capability_t</a> &gt; nlpp::NetlinkGeneric::get_list_phy </td>
+          <td class="memname">std::map&lt; uint32_t, <a class="el" href="structnlpp_1_1dev__capability__t.html">dev_capability_t</a> &gt; nlpp::NetlinkGeneric::get_list_phys </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -250,8 +253,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a65ac7a95a9a5c1430a262dabc960bba3" name="a65ac7a95a9a5c1430a262dabc960bba3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65ac7a95a9a5c1430a262dabc960bba3">&#9670;&#160;</a></span>set_if_channel()</h2>
+<a id="aad97979cd6acd670846e86b78dc2c8ad" name="aad97979cd6acd670846e86b78dc2c8ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad97979cd6acd670846e86b78dc2c8ad">&#9670;&#160;</a></span>set_if_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -259,14 +262,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void nlpp::NetlinkGeneric::set_if_channel </td>
           <td>(</td>
-          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>ifname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#adc275b033511f49e784446d6ece5bdd9">freq_chan_t</a>&#160;</td>
-          <td class="paramname"><em>channel</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#a3f8e61caf082dcf2e1314f8f4908e782">channel_freq_t</a>&#160;</td>
+          <td class="paramname"><em>chan</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -276,21 +279,60 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the frequency channel. </p>
+<p>Set the channel frequency. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ifname</td><td>Interface name. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>Channel to set. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">chan</td><td>Channel frequency to set. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section pre"><dt>Precondition</dt><dd>Link must be in monitor mode and up. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Link must be in monitor mode and up (oyherwise throws resource busy). </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This method corresponds to <code>iw dev &lt;devname&gt; set channel &lt;channel&gt;</code>. </dd></dl>
 
 </div>
 </div>
-<a id="a75c9745983d97d787da5648e1c1c0665" name="a75c9745983d97d787da5648e1c1c0665"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75c9745983d97d787da5648e1c1c0665">&#9670;&#160;</a></span>set_if_type()</h2>
+<a id="a2972baa2e63ba5f8403aeb7970df4999" name="a2972baa2e63ba5f8403aeb7970df4999"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2972baa2e63ba5f8403aeb7970df4999">&#9670;&#160;</a></span>set_if_frequency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nlpp::NetlinkGeneric::set_if_frequency </td>
+          <td>(</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
+          <td class="paramname"><em>ifname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#aaa21105bfbd42c743f95730432c82b64">frequency_t</a>&#160;</td>
+          <td class="paramname"><em>freq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the frequency. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ifname</td><td>Interface name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">freq</td><td>Frequency to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Link must be in monitor mode and up (oyherwise throws resource busy). </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method corresponds to <code>iw dev &lt;devname&gt; set freq &lt;freq&gt;</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a6664078694c85184b60dc7dccbd34643" name="a6664078694c85184b60dc7dccbd34643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6664078694c85184b60dc7dccbd34643">&#9670;&#160;</a></span>set_if_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +340,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void nlpp::NetlinkGeneric::set_if_type </td>
           <td>(</td>
-          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>ifname</em>, </td>
         </tr>
         <tr>
@@ -323,7 +365,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section pre"><dt>Precondition</dt><dd>Link must be down. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Link must be put down (otherwise it throws resource busy). </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This method corresponds to <code>iw dev &lt;devname&gt; set type &lt;type&gt;</code>. </dd></dl>
 
 </div>

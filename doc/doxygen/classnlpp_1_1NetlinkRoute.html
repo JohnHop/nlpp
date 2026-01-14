@@ -92,9 +92,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>NetlinkRoute</b> ()</td></tr>
 <tr class="memdesc:ac7dfe48aefcd29707859e1b21053e307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to the Netlink Route subsystem. <br /></td></tr>
 <tr class="separator:ac7dfe48aefcd29707859e1b21053e307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a264d4455238d2998fd452743b425b843" id="r_a264d4455238d2998fd452743b425b843"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkRoute.html#a264d4455238d2998fd452743b425b843">get_link</a> (<a class="el" href="nlpp_8hpp.html#a645a89090cc65ce93df0a02df652b1c1">if_identifier_t</a> if_identifier)</td></tr>
-<tr class="memdesc:a264d4455238d2998fd452743b425b843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a link object representing a device from his name.  <br /></td></tr>
-<tr class="separator:a264d4455238d2998fd452743b425b843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51082843349ff48eb502a487805bbd1" id="r_ae51082843349ff48eb502a487805bbd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkRoute.html#ae51082843349ff48eb502a487805bbd1">get_kernel</a> (<a class="el" href="nlpp_8hpp.html#a1a90d72d36a41f5f202bc7f4725fd853">if_index_t</a> ifindex)</td></tr>
+<tr class="memdesc:ae51082843349ff48eb502a487805bbd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a link object representing a device from his index.  <br /></td></tr>
+<tr class="separator:ae51082843349ff48eb502a487805bbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e022d80c480996718c7b02e8551d58" id="r_aa0e022d80c480996718c7b02e8551d58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkRoute.html#aa0e022d80c480996718c7b02e8551d58">get_kernel</a> (std::string const &amp;ifname)</td></tr>
+<tr class="memdesc:aa0e022d80c480996718c7b02e8551d58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a link object representing a device from his name.  <br /></td></tr>
+<tr class="separator:aa0e022d80c480996718c7b02e8551d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd2645a6eb11df27184152b6e18fbc55" id="r_acd2645a6eb11df27184152b6e18fbc55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlpp_1_1NetlinkRoute.html#acd2645a6eb11df27184152b6e18fbc55">link_change</a> (<a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a> &amp;origin, <a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a> &amp;change, int flags=0)</td></tr>
 <tr class="memdesc:acd2645a6eb11df27184152b6e18fbc55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change a link object.  <br /></td></tr>
 <tr class="separator:acd2645a6eb11df27184152b6e18fbc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,17 +105,50 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility used to obtain link object (<code><a class="el" href="classnlpp_1_1rtnl__link__t.html" title="Simple C++ wrapper around a struct rtnl_link with RAII.">rtnl_link_t</a></code>) and change link status (es. <code>up</code> o <code>down</code> flag). </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a264d4455238d2998fd452743b425b843" name="a264d4455238d2998fd452743b425b843"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a264d4455238d2998fd452743b425b843">&#9670;&#160;</a></span>get_link()</h2>
+<a id="ae51082843349ff48eb502a487805bbd1" name="ae51082843349ff48eb502a487805bbd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51082843349ff48eb502a487805bbd1">&#9670;&#160;</a></span>get_kernel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a> nlpp::NetlinkRoute::get_link </td>
+          <td class="memname"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a> nlpp::NetlinkRoute::get_kernel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#a645a89090cc65ce93df0a02df652b1c1">if_identifier_t</a>&#160;</td>
-          <td class="paramname"><em>if_identifier</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="nlpp_8hpp.html#a1a90d72d36a41f5f202bc7f4725fd853">if_index_t</a>&#160;</td>
+          <td class="paramname"><em>ifindex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain a link object representing a device from his index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ifindex</td><td>Interface index identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A `<code><a class="el" href="classnlpp_1_1rtnl__link__t.html" title="Simple C++ wrapper around a struct rtnl_link with RAII.">rtnl_link_t</a></code> link object representing the device. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">`std::runtime_error`</td><td>when <code>rtnl_link_get_kernel()</code> fails. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa0e022d80c480996718c7b02e8551d58" name="aa0e022d80c480996718c7b02e8551d58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e022d80c480996718c7b02e8551d58">&#9670;&#160;</a></span>get_kernel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnlpp_1_1rtnl__link__t.html">rtnl_link_t</a> nlpp::NetlinkRoute::get_kernel </td>
+          <td>(</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
+          <td class="paramname"><em>ifname</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -121,7 +157,7 @@ Public Member Functions</h2></td></tr>
 <p>Obtain a link object representing a device from his name. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">if_identifier</td><td>Interface identifier. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ifname</td><td>Interface name identifier. </td></tr>
   </table>
   </dd>
 </dl>

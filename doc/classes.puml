@@ -16,7 +16,7 @@ package "High Level Classes" as HLC <<Rectangle>> {
   }
 
   class NetlinkRoute {
-    get_link()
+    get_kernel()
     link_change()
   }
 }

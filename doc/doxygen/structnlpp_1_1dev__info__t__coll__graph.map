@@ -1,11 +1,7 @@
 <map id="nlpp::dev_info_t" name="nlpp::dev_info_t">
-<area shape="rect" id="Node000001" title="Helper struct containing some device info." alt="" coords="628,67,755,92"/>
-<area shape="rect" id="Node000002" href="$classnlpp_1_1StrongType.html" title=" " alt="" coords="302,17,489,57"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="503,49,628,68,628,73,502,55"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="35,5,214,60"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="228,32,302,33,302,38,227,37"/>
-<area shape="rect" id="Node000004" href="$classnlpp_1_1StrongType.html" title=" " alt="" coords="293,88,497,143"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="511,102,604,91,627,88,628,93,604,97,511,108"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="5,85,244,154"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="258,115,293,114,293,120,258,120"/>
+<area shape="rect" id="Node000001" title="Helper struct containing some device info." alt="" coords="35,227,162,252"/>
+<area shape="rect" id="Node000002" href="$classnlpp_1_1StrongType.html" title=" " alt="" coords="5,109,192,149"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,163,101,226,96,226,96,163"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="9,5,188,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,74,101,109,96,109,96,74"/>
 </map>

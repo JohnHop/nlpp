@@ -1,5 +1,6 @@
 var searchData=
 [
   ['i2name_0',['i2name',['../classnlpp_1_1nlcache__t.html#aea708c7b15aefb0c5f097f055ec570c5',1,'nlpp::nlcache_t']]],
-  ['is_5fsupported_1',['is_supported',['../structnlpp_1_1dev__capability__t.html#a43e78d2f824afd4a8e39eed0f09e823f',1,'nlpp::dev_capability_t::is_supported(if_type_e mode) const noexcept'],['../structnlpp_1_1dev__capability__t.html#a1db132727a34a98214c626fe61429027',1,'nlpp::dev_capability_t::is_supported(frequency_t freq) const noexcept'],['../structnlpp_1_1dev__capability__t.html#a3dafce413fe5563b513ea3a230b88cfe',1,'nlpp::dev_capability_t::is_supported(freq_chan_t chan) const noexcept'],['../structnlpp_1_1dev__capability__t.html#a1ce4a1adac43506a918af4456fac09f8',1,'nlpp::dev_capability_t::is_supported(nl80211_command_e cmd) const noexcept']]]
+  ['index_1',['index',['../classnlpp_1_1rtnl__link__t.html#a6875ce1b545b96a996dd97d1fe2ad8d0',1,'nlpp::rtnl_link_t']]],
+  ['is_5fsupported_2',['is_supported',['../structnlpp_1_1dev__capability__t.html#a53b7bc0c85734df033cf053f87fa3bd1',1,'nlpp::dev_capability_t::is_supported(if_type_e mode) const'],['../structnlpp_1_1dev__capability__t.html#aef646308d2eb66e66c069aaa644c45a4',1,'nlpp::dev_capability_t::is_supported(frequency_t freq) const'],['../structnlpp_1_1dev__capability__t.html#a7a882753e2f748d2f5d07a74ee7ba383',1,'nlpp::dev_capability_t::is_supported(channel_freq_t chan) const'],['../structnlpp_1_1dev__capability__t.html#a8bc4ba352e699fd609a3856b2fc81020',1,'nlpp::dev_capability_t::is_supported(nl80211_command_e cmd) const']]]
 ];
