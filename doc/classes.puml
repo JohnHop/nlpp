@@ -32,7 +32,6 @@ package "Low Level Classes" as LLC <<Rectangle>> {
 }
 
 package "nlpp Custom Types" as CT <<Rectangle>> { 
-  class if_identifier_t
   class dev_info_t
   class dev_capability_t
 }
@@ -42,10 +41,8 @@ NetlinkGeneric *--> nlsocket_t
 NetlinkGeneric -.> nlmsg_t
 NetlinkGeneric -.> dev_info_t
 NetlinkGeneric -.> dev_capability_t
-NetlinkGeneric -.> if_identifier_t
 NetlinkRoute *--> nlsocket_t
 NetlinkRoute -.> rtnl_link_t
-NetlinkRoute -.> if_identifier_t
 
 ' From LLC
 nlsocket_t o--> nlcb_t
