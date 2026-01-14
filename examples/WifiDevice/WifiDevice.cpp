@@ -4,9 +4,9 @@
 #include <format>
 
 
-WifiDevice::WifiDevice(std::string_view if_name, nlpp::if_type_e if_type)
+WifiDevice::WifiDevice(std::string const& ifname, nlpp::if_type_e if_type)
 { 
-  ifindex_ = nlroute_.get_link(if_name).get_index().value();
+  ifindex_ = nlroute_.get_kernel(ifname).index().value();
 
   // optionally set the interface type
   if(if_type != nlpp::if_type_e::unspecified) {
@@ -18,13 +18,13 @@ WifiDevice::WifiDevice(std::string_view if_name, nlpp::if_type_e if_type)
 std::string WifiDevice::get_name()
 {
 
-  return nlroute_.get_link(ifindex_).name();
+  return nlroute_.get_kernel(ifindex_).name();
 }
 
 
 bool WifiDevice::is_up() noexcept
 {
-  return nlroute_.get_link(ifindex_).flags().get().to_ulong() 
+  return nlroute_.get_kernel(ifindex_).flags().get().to_ulong() 
     & std::to_underlying(nlpp::if_flag_e::up);
 }
 
@@ -32,14 +32,14 @@ bool WifiDevice::is_up() noexcept
 nlpp::if_type_e WifiDevice::get_type()
 {
   // FIXME: always check optionals!
-  return nlgeneric_.get_interface(nlroute_.get_link(ifindex_).get_index().value()).type;
+  return nlgeneric_.get_interface(nlroute_.get_kernel(ifindex_).index().value()).type;
 }
 
 
 std::optional<nlpp::frequency_t> WifiDevice::get_frequency()
 {
   auto result = nlgeneric_.get_interface(
-    nlroute_.get_link(ifindex_).get_index().value()).wiphy_freq;
+    nlroute_.get_kernel(ifindex_).index().value()).wiphy_freq;
   
   return result;
 }
@@ -47,10 +47,10 @@ std::optional<nlpp::frequency_t> WifiDevice::get_frequency()
 
 std::string WifiDevice::to_string()
 {
-  auto link = nlroute_.get_link(ifindex_);
+  auto link = nlroute_.get_kernel(ifindex_);
 
   return std::format("{}, state: {}, flags: {}", 
-    nlpp::to_string(nlgeneric_.get_interface(link.get_index().value())),
+    nlpp::to_string(nlgeneric_.get_interface(link.index().value())),
     nlpp::to_string(link.operstate()), 
     nlpp::to_string(link.flags()) );
 }
@@ -58,7 +58,7 @@ std::string WifiDevice::to_string()
 
 void WifiDevice::put_up()
 {
-  auto current = nlroute_.get_link(ifindex_);
+  auto current = nlroute_.get_kernel(ifindex_);
   nlpp::rtnl_link_t change;
 
   change.set_flags(nlpp::if_flags_t{std::to_underlying(nlpp::if_flag_e::up)});
@@ -68,7 +68,7 @@ void WifiDevice::put_up()
 
 void WifiDevice::put_down()
 {
-  auto current = nlroute_.get_link(ifindex_);
+  auto current = nlroute_.get_kernel(ifindex_);
   nlpp::rtnl_link_t change;
 
   change.unset_flags(nlpp::if_flags_t{std::to_underlying(nlpp::if_flag_e::up)});
@@ -79,12 +79,12 @@ void WifiDevice::put_down()
 void WifiDevice::set_type(nlpp::if_type_e type)
 {
   this->put_down();
-  nlgeneric_.set_if_type(nlroute_.get_link(ifindex_).name(), type);
+  nlgeneric_.set_if_type(nlroute_.get_kernel(ifindex_).name(), type);
   this->put_up();
 }
 
 
 void WifiDevice::set_frequency(nlpp::frequency_t freq)
 {
-  this->nlgeneric_.set_if_frequency(nlroute_.get_link(ifindex_).name(), freq);
+  this->nlgeneric_.set_if_frequency(nlroute_.get_kernel(ifindex_).name(), freq);
 }

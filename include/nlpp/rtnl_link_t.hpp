@@ -64,7 +64,7 @@ public:
 
   /// @brief Returns link index (if specified for this link).
   /// @returns 
-  [[nodiscard]] std::optional<if_index_t> get_index() noexcept;
+  [[nodiscard]] std::optional<if_index_t> index() noexcept;
 
   /// @brief Returns the operational state (also called link status).
   /// @returns Operational state of the link.

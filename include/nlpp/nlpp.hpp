@@ -18,7 +18,6 @@
 #include <string>
 #include <bitset>
 #include <vector>
-#include <variant>
 #include <optional>
 
 
@@ -41,9 +40,6 @@ using channel_freq_t = StrongType<int, struct channel_freq_tag>;
 /// @brief Strong type for frequency.
 using frequency_t 
   = StrongType<unsigned int, struct frequency_tag, LessComparable>;
-
-/// @brief A device can be identified by his name or numeric ID.
-using if_identifier_t = std::variant<std::string,if_index_t>;
 
 
 /// @brief Netlink protocols used in `nlsocket_t::connect()` call.
@@ -341,22 +337,22 @@ struct dev_capability_t
   /// @brief Checks if a interface type is supported by this device.
   /// @param[in] mode Interface type mode to check.
   /// @returns true if `mode` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(if_type_e mode) const noexcept;
+  [[nodiscard]] bool is_supported(if_type_e mode) const;
   
   /// @brief Checks if a specific frequency is supported by this device.
   /// @param[in] freq Frequency to check.
   /// @returns true if `freq` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(frequency_t freq) const noexcept;
+  [[nodiscard]] bool is_supported(frequency_t freq) const;
   
   /// @brief Checks if a frequency channel is suppoted by this device.
   /// @param[in] chan Frequency channel to check.
   /// @returns true if `chan` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(channel_freq_t chan) const noexcept;
+  [[nodiscard]] bool is_supported(channel_freq_t chan) const;
   
   /// @brief Check is a nl80211 command is supported by this device.
   /// @param[in] cmd A nl80211 command to check.
   /// @returns true if `cmd` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(nl80211_command_e cmd) const noexcept;
+  [[nodiscard]] bool is_supported(nl80211_command_e cmd) const;
 
   /// @brief Compares two `dev_capability_t`.
   /// @param[in] lhs Left capability operand.

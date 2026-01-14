@@ -18,29 +18,32 @@ std::string_view nlpp::to_string(if_flag_e flag)
 {
   using namespace std::string_view_literals;
 
-	static constexpr std::array strings{
-		"up"sv,
-		"broadcast"sv,
-		"debug"sv,
-		"loopback"sv,
-		"point_to_point"sv,
-		"no_trailers"sv,
-		"running"sv,
-		"no_arp"sv,
-		"promisc"sv,
-		"all_multi"sv,
-		"master"sv,
-		"slave"sv,
-		"multicast"sv,
-		"port_sel"sv,
-		"automedia"sv,
-		"dynamic"sv,
-		"lower_up"sv,
-		"dormant"sv,
-		"echo"sv
+	std::string_view result;
+
+	switch(flag)
+	{
+		case if_flag_e::up: 						result = "up"sv; 							break;
+		case if_flag_e::broadcast: 			result = "broadcast"sv; 			break;
+		case if_flag_e::debug: 					result = "debug"sv; 					break;
+		case if_flag_e::loopback: 			result = "loopback"sv; 				break;
+		case if_flag_e::point_to_point: result = "point_to_point"sv;	break;
+		case if_flag_e::no_trailers: 		result = "no_trailers"sv; 		break;
+		case if_flag_e::running: 				result = "running"sv; 				break;
+		case if_flag_e::no_arp: 				result = "no_arp"sv; 					break;
+		case if_flag_e::promisc: 				result = "promisc"sv; 				break;
+		case if_flag_e::all_multi: 			result = "all_multi"sv; 			break;
+		case if_flag_e::master: 				result = "master"sv; 					break;
+		case if_flag_e::slave: 					result = "slave"sv; 					break;
+		case if_flag_e::multicast: 			result = "multicast"sv; 			break;
+		case if_flag_e::port_sel: 			result = "port_sel"sv; 				break;
+		case if_flag_e::automedia: 			result = "automedia"sv; 			break;
+		case if_flag_e::dynamic:	 			result = "dynamic"sv; 				break;
+		case if_flag_e::lower_up: 			result = "lower_up"sv; 				break;
+		case if_flag_e::dormant: 				result = "dormant"sv;	 				break;
+		case if_flag_e::echo: 					result = "echo"sv; 						break;
 	};
 
-  return strings[std::to_underlying(flag)];
+  return result;
 }
 
 
@@ -80,21 +83,21 @@ std::string_view nlpp::to_string(if_type_e type)
 }
 
 
-bool dev_capability_t::is_supported(if_type_e mode) const noexcept 
+bool dev_capability_t::is_supported(if_type_e mode) const 
 {
   return 
     std::ranges::find(this->iftypes, mode) != std::ranges::end(this->iftypes);
 }
 
 
-bool dev_capability_t::is_supported(frequency_t freq) const noexcept 
+bool dev_capability_t::is_supported(frequency_t freq) const 
 {
   return 
     std::ranges::find(this->freqs, freq) != std::ranges::end(this->freqs);
 }
 
 
-bool dev_capability_t::is_supported(channel_freq_t chan) const noexcept 
+bool dev_capability_t::is_supported(channel_freq_t chan) const 
 {
   return
     std::ranges::find(this->freqs, chan, freq2chan) 
@@ -102,7 +105,7 @@ bool dev_capability_t::is_supported(channel_freq_t chan) const noexcept
 }
 
 
-bool dev_capability_t::is_supported(nl80211_command_e cmd) const noexcept 
+bool dev_capability_t::is_supported(nl80211_command_e cmd) const 
 {
   return std::ranges::find(this->cmds, cmd) != std::ranges::end(this->cmds);
 }
@@ -112,10 +115,10 @@ std::string nlpp::to_string(if_flags_t flags)
 {
 	std::string result;
   
-  auto bitset = flags.get();
+  auto const bitset = flags.get();
 	for(int i = 0; i < bitset.size()-1; ++i)
 	{
-		auto flag = (bitset[i] ? 1 : 0) << i;
+		auto const flag = (bitset[i] ? 1 : 0) << i;
 		if(flag) {
 			result += flag ? ::to_string(static_cast<if_flag_e>(flag)) : "";
 			result += flag ? "," : "";

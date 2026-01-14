@@ -46,6 +46,7 @@ rtnl_link_t& rtnl_link_t::operator=(rtnl_link_t&& rhs) noexcept
 }
 
 
+/// @note It is safe to call `rtnl_link_put(nullptr)`
 rtnl_link_t::~rtnl_link_t()
 {
   rtnl_link_put(linkPtr_);
@@ -60,7 +61,7 @@ struct rtnl_link* rtnl_link_t::get_pointer() const noexcept
 
 std::string rtnl_link_t::to_string()
 {
-  auto index = this->get_index();
+  auto index = this->index();
 
   return std::format("name: {}, index: {}, flags: {}, state: {}",
     this->name(),
@@ -76,7 +77,7 @@ std::string rtnl_link_t::name() noexcept
 }
 
 
-std::optional<if_index_t> rtnl_link_t::get_index() noexcept
+std::optional<if_index_t> rtnl_link_t::index() noexcept
 {
   std::optional<if_index_t> result;
 

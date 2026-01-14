@@ -18,30 +18,33 @@ NetlinkRoute::NetlinkRoute()
 }
 
 
-rtnl_link_t NetlinkRoute::get_link(if_identifier_t if_identifier)
+rtnl_link_t NetlinkRoute::get_kernel(if_index_t ifindex)
 {
-  rtnl_link_t result;
-  int err{};
-
-  std::visit([socketPtr=socket_.get_pointer(), &result, &err](auto if_id)
-  {
-    struct rtnl_link* linkPtr;  // out argument for `rtnl_link_get_kernel()`
-
-    if constexpr(std::is_same_v<std::string,decltype(if_id)>) {
-      err = rtnl_link_get_kernel(socketPtr, {}, if_id.data(), &linkPtr);
-    }
-    else if constexpr(std::is_same_v<if_index_t,decltype(if_id)>) {
-      err = rtnl_link_get_kernel(socketPtr, if_id.get(), {}, &linkPtr);
-    }
-
-    result = rtnl_link_t{linkPtr};
-  }, if_identifier);
+  struct rtnl_link* linkPtr;  // out argument for `rtnl_link_get_kernel()`
+    
+  int err 
+    = rtnl_link_get_kernel(socket_.get_pointer(), ifindex.get(), {}, &linkPtr);
 
   if(err < 0) {
     throw std::runtime_error{nl_geterror(err)};
   }
 
-  return result;
+  return rtnl_link_t{linkPtr};
+}
+
+
+rtnl_link_t NetlinkRoute::get_kernel(std::string const& ifname)
+{
+  struct rtnl_link* linkPtr;  // out argument for `rtnl_link_get_kernel()`
+  
+  int err 
+    = rtnl_link_get_kernel(socket_.get_pointer(), {}, ifname.c_str(), &linkPtr);
+
+  if(err < 0) {
+    throw std::runtime_error{nl_geterror(err)};
+  }
+
+  return rtnl_link_t{linkPtr};
 }
 
 

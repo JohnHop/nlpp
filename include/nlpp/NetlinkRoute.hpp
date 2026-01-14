@@ -30,22 +30,24 @@ public:
 
 // libnl API
 
-  /// @brief Obtain a link object representing a device from his name.
-  /// @param[in] if_identifier Interface identifier.
+  /// @brief Obtain a link object representing a device from his index.
+  /// @param[in] ifindex Interface index identifier.
   /// @returns A ``rtnl_link_t` link object  representing the device.
   /// @throws `std::runtime_error` when `rtnl_link_get_kernel()` fails.
-  [[nodiscard]] rtnl_link_t get_link(if_identifier_t if_identifier);
-  
+  [[nodiscard]] rtnl_link_t get_kernel(if_index_t ifindex);
+
+  /// @brief Obtain a link object representing a device from his name.
+  /// @param[in] ifname Interface name identifier.
+  /// @returns A ``rtnl_link_t` link object  representing the device.
+  /// @throws `std::runtime_error` when `rtnl_link_get_kernel()` fails.
+  [[nodiscard]] rtnl_link_t get_kernel(std::string const& ifname);
+
   /// @brief Change a link object.
   /// @param[inout] origin Actual link to change.
   /// @param[in] change Link object containing the changes.
   /// @param[in] flags Optional flags.
   /// @throws `std::runtime_error` when `rtnl_link_change()` call fails.
   void link_change(rtnl_link_t& origin, rtnl_link_t& change, int flags = 0);
-
-  // TODO: wrap rtnl_link_get_kernel()
-  // rtnl_link_t get_kernel(nlsocket_t&, std::string const&)
-  // rtnl_link_t get_kernel(nlsocket_t&, if_index_t);
 };
 
 

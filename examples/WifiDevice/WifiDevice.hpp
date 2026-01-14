@@ -29,7 +29,7 @@ public:
   /// @brief Construct a device issuing a request directly to the kernel.
   /// @param[in] if_name Wireless device name.
   /// @param[in] if_type Interface type to set.
-  WifiDevice(std::string_view, nlpp::if_type_e = {});
+  WifiDevice(std::string const&, nlpp::if_type_e = {});
 
 // Getters
 
