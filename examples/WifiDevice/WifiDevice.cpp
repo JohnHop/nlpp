@@ -38,10 +38,19 @@ nlpp::if_type_e WifiDevice::get_type()
 
 std::optional<nlpp::frequency_t> WifiDevice::get_frequency()
 {
-  auto result = nlgeneric_.get_interface(
+  auto frequency = nlgeneric_.get_interface(
     nlroute_.get_kernel(ifindex_).index().value()).wiphy_freq;
   
-  return result;
+  return frequency;
+}
+
+
+std::optional<nlpp::channel_freq_t> WifiDevice::get_channel()
+{
+  auto frequency = nlgeneric_.get_interface(
+    nlroute_.get_kernel(ifindex_).index().value()).wiphy_freq;
+  
+  return nlpp::freq2chan(frequency.value());
 }
 
 
@@ -86,5 +95,12 @@ void WifiDevice::set_type(nlpp::if_type_e type)
 
 void WifiDevice::set_frequency(nlpp::frequency_t freq)
 {
-  this->nlgeneric_.set_if_frequency(nlroute_.get_kernel(ifindex_).name(), freq);
+  nlgeneric_.set_if_frequency(nlroute_.get_kernel(ifindex_).name(), freq);
+}
+
+
+void WifiDevice::set_channel_freq(nlpp::channel_freq_t chan)
+{
+  auto const freq = nlpp::chan2freq(chan);
+  nlgeneric_.set_if_frequency(nlroute_.get_kernel(ifindex_).name(), freq);
 }

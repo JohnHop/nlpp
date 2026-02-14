@@ -44,6 +44,9 @@ public:
 
   /// @brief Retrieve the frequency.
   [[nodiscard]] std::optional<nlpp::frequency_t> get_frequency();
+
+  /// @brief Retrieve the channel frequency.
+  [[nodiscard]] std::optional<nlpp::channel_freq_t> get_channel();
   
   /// @brief Obtain the string representation.
   [[nodiscard]] std::string to_string();
@@ -61,8 +64,11 @@ public:
   
   /// @brief Set device frequency.
   /// @param[in] freq Frequency to set.
-  /// @throw TODO when `freq` is not supported or invalid.
+  /// @throw // TODO when `freq` is not supported or invalid.
   void set_frequency(nlpp::frequency_t freq);
+
+  /// @brief Set the device channel frequency.
+  void set_channel_freq(nlpp::channel_freq_t chan);
 };
 
 

@@ -309,7 +309,7 @@ struct dev_info_t
   std::string                 mac_address;   ///< NL80211_ATTR_MAC
   std::string                 ssid;          ///< NL80211_ATTR_SSID
   if_type_e                   type;          ///< NL80211_ATTR_IFTYPE
-  if_index_t                  wiphy_index;   ///< NL80211_ATTR_WIPHY
+  wiphy_index_t               wiphy_index;   ///< NL80211_ATTR_WIPHY
   std::optional<frequency_t>  wiphy_freq;    ///< NL80211_ATTR_WIPHY_FREQ
   int                         channel_width; ///< NL80211_ATTR_CHANNEL_WIDTH
 
@@ -337,22 +337,22 @@ struct dev_capability_t
   /// @brief Checks if a interface type is supported by this device.
   /// @param[in] mode Interface type mode to check.
   /// @returns true if `mode` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(if_type_e mode) const;
+  [[nodiscard]] bool is_supported(if_type_e const mode) const;
   
   /// @brief Checks if a specific frequency is supported by this device.
   /// @param[in] freq Frequency to check.
   /// @returns true if `freq` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(frequency_t freq) const;
+  [[nodiscard]] bool is_supported(frequency_t const freq) const;
   
   /// @brief Checks if a frequency channel is suppoted by this device.
   /// @param[in] chan Frequency channel to check.
   /// @returns true if `chan` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(channel_freq_t chan) const;
+  [[nodiscard]] bool is_supported(channel_freq_t const chan) const;
   
   /// @brief Check is a nl80211 command is supported by this device.
   /// @param[in] cmd A nl80211 command to check.
   /// @returns true if `cmd` is supported, otherwise false.
-  [[nodiscard]] bool is_supported(nl80211_command_e cmd) const;
+  [[nodiscard]] bool is_supported(nl80211_command_e const cmd) const;
 
   /// @brief Compares two `dev_capability_t`.
   /// @param[in] lhs Left capability operand.
@@ -372,27 +372,27 @@ struct dev_capability_t
 /// @brief Translation from operational status code to std::string.
 /// @param[in] operstate An operational state.
 /// @returns The operational status name.
-[[nodiscard]] std::string to_string(if_operstate_e operstate);
+[[nodiscard]] std::string to_string(if_operstate_e const operstate);
 
 /// @brief Translation from interface type to std::string.
 /// @param[in] type The interface type.
 /// @returns The interface type name.
-[[nodiscard]] std::string_view to_string(if_type_e type);
+[[nodiscard]] std::string_view to_string(if_type_e const type);
 
 /// @brief Translation from interface flag to std::string.
 /// @param[in] flag An interface flag.
 /// @returns The interface flag name.
-[[nodiscard]] std::string_view to_string(if_flag_e flag);
+[[nodiscard]] std::string_view to_string(if_flag_e const flag);
 
 /// @brief Translation from interface flags to comma separated std::string.
 /// @param[in] flags An interface flag bitset.
 /// @returns The comma separated interface flag names.
-[[nodiscard]] std::string to_string(if_flags_t flags);
+[[nodiscard]] std::string to_string(if_flags_t const flags);
 
 /// @brief Translation from `enum nl80211_commands` to string;
 /// @param[in] cmd An interface command.
 /// @returns The interface command name.
-[[nodiscard]] std::string_view to_string(nl80211_command_e cmd);
+[[nodiscard]] std::string_view to_string(nl80211_command_e const cmd);
 
 /// @brief Translation from a nlpp device info type to string.
 /// @param[in] info A device info.
@@ -418,13 +418,13 @@ struct dev_capability_t
 /// @param[in] freq A wireless frequency.
 /// @returns The frequency associated with a channel.
 /// @note From iw source code.
-[[nodiscard]] channel_freq_t freq2chan(frequency_t freq) noexcept;
+[[nodiscard]] channel_freq_t freq2chan(frequency_t const freq) noexcept;
 
 /// @brief Returns the frequency equivalents to a channel.
 /// @param[in] chan A frequency channel.
 /// @returns The wireless frequency associated with a frequency channel.
 /// @note From `iw` source code.
-[[nodiscard]] frequency_t chan2freq(channel_freq_t chan) noexcept;
+[[nodiscard]] frequency_t chan2freq(channel_freq_t const chan) noexcept;
 
 
 };  // end namespace nlpp

@@ -14,7 +14,7 @@
 using namespace nlpp;
 
 
-std::string_view nlpp::to_string(if_flag_e flag)
+std::string_view nlpp::to_string(if_flag_e const flag)
 {
   using namespace std::string_view_literals;
 
@@ -47,19 +47,21 @@ std::string_view nlpp::to_string(if_flag_e flag)
 }
 
 
-std::string nlpp::to_string(if_operstate_e operstate)
+std::string nlpp::to_string(if_operstate_e const operstate)
 {
   // the longest operational status code string is 14 bytes
-	std::array<char,15> buff{};
+	std::array<char,15> buff{};	// fixme: usa direttamente std::string ?
 
 	rtnl_link_operstate2str(
-    std::to_underlying(operstate), buff.data(), buff.size() );
+    std::to_underlying(operstate), 
+		buff.data(), 
+		buff.size() );
 
 	return std::string(buff.data());
 }
 
 
-std::string_view nlpp::to_string(if_type_e type)
+std::string_view nlpp::to_string(if_type_e const type)
 {
   using namespace std::string_view_literals;
 
@@ -83,21 +85,21 @@ std::string_view nlpp::to_string(if_type_e type)
 }
 
 
-bool dev_capability_t::is_supported(if_type_e mode) const 
+bool dev_capability_t::is_supported(if_type_e const mode) const 
 {
   return 
     std::ranges::find(this->iftypes, mode) != std::ranges::end(this->iftypes);
 }
 
 
-bool dev_capability_t::is_supported(frequency_t freq) const 
+bool dev_capability_t::is_supported(frequency_t const freq) const 
 {
   return 
     std::ranges::find(this->freqs, freq) != std::ranges::end(this->freqs);
 }
 
 
-bool dev_capability_t::is_supported(channel_freq_t chan) const 
+bool dev_capability_t::is_supported(channel_freq_t const chan) const 
 {
   return
     std::ranges::find(this->freqs, chan, freq2chan) 
@@ -105,13 +107,13 @@ bool dev_capability_t::is_supported(channel_freq_t chan) const
 }
 
 
-bool dev_capability_t::is_supported(nl80211_command_e cmd) const 
+bool dev_capability_t::is_supported(nl80211_command_e const cmd) const 
 {
   return std::ranges::find(this->cmds, cmd) != std::ranges::end(this->cmds);
 }
 
 
-std::string nlpp::to_string(if_flags_t flags)
+std::string nlpp::to_string(if_flags_t const flags)
 {
 	std::string result;
   
@@ -131,7 +133,7 @@ std::string nlpp::to_string(if_flags_t flags)
 }
 
 
-std::string_view nlpp::to_string(nl80211_command_e cmd)
+std::string_view nlpp::to_string(nl80211_command_e const cmd)
 {
 	using namespace std::literals;
 
@@ -378,7 +380,7 @@ if_index_t phy_lookup(std::string_view phy_name)
 }
 
 
-channel_freq_t nlpp::freq2chan(frequency_t freq) noexcept
+channel_freq_t nlpp::freq2chan(frequency_t const freq) noexcept
 {
 	auto f = freq.get();
 	int res = 0;
@@ -398,7 +400,7 @@ channel_freq_t nlpp::freq2chan(frequency_t freq) noexcept
 }
 
 
-frequency_t nlpp::chan2freq(channel_freq_t chan) noexcept
+frequency_t nlpp::chan2freq(channel_freq_t const chan) noexcept
 {
 	auto c = chan.get();
 	frequency_t::value_type res = (c + 1000) * 5;
