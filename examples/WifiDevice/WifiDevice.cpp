@@ -9,8 +9,11 @@ WifiDevice::WifiDevice(std::string const& ifname, nlpp::if_type_e if_type)
   ifindex_ = nlroute_.get_kernel(ifname).index().value();
 
   // optionally set the interface type
-  if(if_type != nlpp::if_type_e::unspecified) {
+  if(if_type != nlpp::if_type_e::unspecified) 
+  {
+    this->put_down();
     this->set_type(if_type);
+    this->put_up();
   }
 }
 
@@ -103,4 +106,10 @@ void WifiDevice::set_channel_freq(nlpp::channel_freq_t chan)
 {
   auto const freq = nlpp::chan2freq(chan);
   nlgeneric_.set_if_frequency(nlroute_.get_kernel(ifindex_).name(), freq);
+}
+
+
+nlpp::dev_info_t WifiDevice::dev_info()
+{
+  return nlgeneric_.get_interface(ifindex_);
 }

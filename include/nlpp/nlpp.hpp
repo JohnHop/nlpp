@@ -4,6 +4,8 @@
 /**
  * @file nlpp.hpp
  * Contains common definitions used across by entities.
+ *
+ * fixme: this file msu called core.hpp or something
  */
 
 
@@ -35,6 +37,7 @@ using if_index_t = StrongType<uint32_t, struct if_index_tag>;
 using wiphy_index_t = StrongType<uint32_t, struct wiphy_index_tag>;
 
 /// @brief Strong type for frequency channel.
+// ? maybe must be an enum?
 using channel_freq_t = StrongType<int, struct channel_freq_tag>;
 
 /// @brief Strong type for frequency.
@@ -109,25 +112,25 @@ enum class if_type_e
 /// @note From `<net/if.h>`
 enum class if_flag_e 
 {
-  up           = IFF_UP,          // 1<<0
-  broadcast    = IFF_BROADCAST,   // 1<<1
-  debug        = IFF_DEBUG,       // 1<<2
-  loopback     = IFF_LOOPBACK,    // 1<<3
+  up             = IFF_UP,          // 1<<0
+  broadcast      = IFF_BROADCAST,   // 1<<1
+  debug          = IFF_DEBUG,       // 1<<2
+  loopback       = IFF_LOOPBACK,    // 1<<3
   point_to_point = IFF_POINTOPOINT, // 1<<4
-  no_trailers  = IFF_NOTRAILERS,  // 1<<5
-  running      = IFF_RUNNING,     // 1<<6
-  no_arp       = IFF_NOARP,       // 1<<7
-  promisc      = IFF_PROMISC,     // 1<<8
-  all_multi    = IFF_ALLMULTI,    // 1<<9
-  master       = IFF_MASTER,      // 1<<10
-  slave        = IFF_SLAVE,       // 1<<11
-  multicast    = IFF_MULTICAST,   // 1<<12
-  port_sel     = IFF_PORTSEL,     // 1<<13
-  automedia    = IFF_AUTOMEDIA,   // 1<<14
-  dynamic      = IFF_DYNAMIC,     // 1<<15
-  lower_up     = 1<<16,           // IFF_LOWER_UP
-  dormant      = 1<<17,           // IFF_DORMANT
-  echo         = 1<<18            // IFF_ECHO
+  no_trailers    = IFF_NOTRAILERS,  // 1<<5
+  running        = IFF_RUNNING,     // 1<<6
+  no_arp         = IFF_NOARP,       // 1<<7
+  promisc        = IFF_PROMISC,     // 1<<8
+  all_multi      = IFF_ALLMULTI,    // 1<<9
+  master         = IFF_MASTER,      // 1<<10
+  slave          = IFF_SLAVE,       // 1<<11
+  multicast      = IFF_MULTICAST,   // 1<<12
+  port_sel       = IFF_PORTSEL,     // 1<<13
+  automedia      = IFF_AUTOMEDIA,   // 1<<14
+  dynamic        = IFF_DYNAMIC,     // 1<<15
+  lower_up       = 1<<16,           // IFF_LOWER_UP
+  dormant        = 1<<17,           // IFF_DORMANT
+  echo           = 1<<18            // IFF_ECHO
 };
 
 

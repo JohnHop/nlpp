@@ -39,7 +39,7 @@ public:
   /// @brief Get link status fom a `rtnl_link_t` obj and returns if it is UP.
   [[nodiscard]] bool is_up() noexcept;
 
-  /// @brief Retrieve the interface type from a `rtnl_link_t` object and returns it.
+  /// @brief Retrieve the interface type from a `rtnl_link_t` object.
   [[nodiscard]] nlpp::if_type_e get_type();
 
   /// @brief Retrieve the frequency.
@@ -47,6 +47,9 @@ public:
 
   /// @brief Retrieve the channel frequency.
   [[nodiscard]] std::optional<nlpp::channel_freq_t> get_channel();
+
+  /// @brief Obtain the associated `dev_info_t` to this interface.
+  [[nodiscard]] nlpp::dev_info_t dev_info();
   
   /// @brief Obtain the string representation.
   [[nodiscard]] std::string to_string();
