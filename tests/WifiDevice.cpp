@@ -1,4 +1,4 @@
-#include "WifiDevice.hpp"
+#include "nlpp/utils/WifiDevice.hpp"
 
 #include <cstdlib>
 #include <print>
@@ -20,5 +20,6 @@ int main(int argc, char* argv[])
 
   std::println("{}", device.to_string()); // print some info
 
+  
   return EXIT_SUCCESS;
 }

@@ -3,3 +3,6 @@ target_link_libraries(NetlinkGenericTest nlpp)
 
 add_executable(NetlinkRouteTest NetlinkRouteTest.cpp)
 target_link_libraries(NetlinkRouteTest nlpp)
+
+add_executable(WifiDeviceTest WifiDevice.cpp)
+target_link_libraries(WifiDeviceTest nlpp)

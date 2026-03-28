@@ -1,5 +1,5 @@
-#if !defined(WIFIDEVICE_HPP)
-#define WIFIDEVICE_HPP
+#if !defined(NLPP_WIFIDEVICE_HPP)
+#define NLPP_WIFIDEVICE_HPP
 
 
 /**
@@ -75,4 +75,4 @@ public:
 };
 
 
-#endif // WIFIDEVICE_HPP
+#endif // NLPP_WIFIDEVICE_HPP

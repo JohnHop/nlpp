@@ -24,11 +24,13 @@ add_library(nlpp
   src/nlcb_t.cpp
   src/nlsocket_t.cpp
   src/rtnl_link_t.cpp
+  src/utils/WifiDevice.cpp
 )
 target_include_directories(nlpp
-  PRIVATE include/nlpp/
-  PUBLIC  include/
-          /usr/include/libnl3/
+  PRIVATE include/nlpp
+          include/nlpp/utils
+  PUBLIC  include
+          /usr/include/libnl3
 )
 target_link_libraries(nlpp
   PRIVATE nl-3 
@@ -38,5 +40,4 @@ target_link_libraries(nlpp
 target_compile_features(nlpp PUBLIC cxx_std_23)
 
 
-add_subdirectory(examples/) # compile examples
-add_subdirectory(tests/)  # compile tests
+add_subdirectory(tests)  # compile tests
