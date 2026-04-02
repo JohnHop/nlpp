@@ -2,10 +2,9 @@
 #define NETLINKROUTE_HPP
 
 
-/**
- * @file NetlinkRoute.hpp
- * Contains the `NetlinkRoute` class definition.
- */
+/// @file NetlinkRoute.hpp
+/// Contains the `NetlinkRoute` class definition.
+
 
 #include "nlpp.hpp"
 #include "nlsocket_t.hpp"
@@ -16,19 +15,19 @@ namespace nlpp
 {
 
 
-/**
- * @brief Utility used to obtain link object (`rtnl_link_t`) and change link
- *        status (es. `up` o `down` flag).
- */
+/// @brief Utility used to obtain link object (`rtnl_link_t`) and change link
+///        status (es. `up` o `down` flag).
+/// 
 class NetlinkRoute
 {
   nlsocket_t socket_; // to connect to routing subsystem
 
 public:
+
   /// @brief Connect to the Netlink Route subsystem.
   NetlinkRoute();
 
-// libnl API
+// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Obtain a link object representing a device from his index.
   /// @param[in] ifindex Interface index identifier.

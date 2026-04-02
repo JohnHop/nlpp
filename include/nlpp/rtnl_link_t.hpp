@@ -2,10 +2,9 @@
 #define RTNLLINKT_HPP
 
 
-/** 
- * @file rtnl_link_t.hpp
- * Contains the rtnl_link_t class definition.
- */
+/// @file rtnl_link_t.hpp
+/// Contains the rtnl_link_t class definition.
+
 
 #include <netlink/route/link.h>
 
@@ -18,18 +17,18 @@
 namespace nlpp {
 
 
-/**
- * @brief Simple C++ wrapper around a `struct rtnl_link` with RAII.
- * 
- * This object represent a link device.
- * You can obtain this link object using a `nlcache_t` or directly from 
- * `rtnl_link_get_kernel()`.
- */
+/// @brief Simple C++ wrapper around a `struct rtnl_link` with RAII.
+/// 
+/// This object represent a link device.
+/// You can obtain this link object using a `nlcache_t` or directly from 
+/// `rtnl_link_get_kernel()`.
+/// 
 class rtnl_link_t
 {
   struct rtnl_link* linkPtr_{}; // Underlying pointer
 
 public:
+
   /// @brief Default constructortor. Allocate a empty link object.
   /// @throws `std::system_error` with `ENOMEM` error code.
   rtnl_link_t();
@@ -56,7 +55,7 @@ public:
   /// @returns The description of the rtnl link.
   [[nodiscard]] std::string to_string();
 
-// libnl api -------------------------------------------------------------------
+// libnl api / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Returns link name or an empty string if no name exists.
   /// @returns The link name is the name assigned to a network interface.
@@ -81,6 +80,7 @@ public:
   void unset_flags(if_flags_t) noexcept;
 
 private:
+
   /// @brief Custom swap helper. Prevents recursive call of `std::swap()`.
   friend void swap(rtnl_link_t& lhs, rtnl_link_t& rhs) noexcept
   {
@@ -89,7 +89,7 @@ private:
 };
 
 
-};
+};  // end `nlpp` namespace
 
 
 #endif // RTNLLINKT_HPP

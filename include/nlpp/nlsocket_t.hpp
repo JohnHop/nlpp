@@ -2,10 +2,9 @@
 #define NLSOCKET_H
 
 
-/** 
- * @file nlsocket_t.hpp
- * Contains the `nlsocket_t` class definition.
- */
+/// @file nlsocket_t.hpp
+/// Contains the `nlsocket_t` class definition.
+
 
 #include "nlpp.hpp"
 #include "nlcb_t.hpp"
@@ -19,9 +18,8 @@
 namespace nlpp {
 
 
-/**
- * @brief Simple C++ wrapper around a `struct nl_sock` with RAII. 
- */
+/// @brief Simple C++ wrapper around a `struct nl_sock` with RAII. 
+/// 
 class nlsocket_t
 {
   struct nl_sock* socketPtr_{}; // Underlying pointer
@@ -29,6 +27,7 @@ class nlsocket_t
   nlcb_t callback_;   // Callback to invoke after received a response
 
 public:
+
   /// @brief Default ctor. Allocate a nl socket.
   /// @throws `std::system_error` when not enough memory available.
   nlsocket_t();
@@ -56,7 +55,8 @@ public:
   [[nodiscard]] bool connected() const noexcept { return this->connected_; }
 
 
-// libnl API -------------------------------------------------------------------
+// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
 
   /// @brief Connect to a netlink kernel subsystem using the socket.
   /// @param[in] protocol Netlink protocol to use.
@@ -80,13 +80,16 @@ public:
   void recvmsgs(nlcb_t& cb);
 
 private:
+
   /// @brief Custom swap helper. Prevents recursive call of `std::swap()`.
   friend void swap(nlsocket_t& lhs, nlsocket_t& rhs) noexcept
   {
     std::swap(lhs.socketPtr_, rhs.socketPtr_);
   }
 
-// Netlink callbacks ----------------------------------------------------------/
+
+// Netlink callbacks / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
 
   /// @brief Default error handler.
   static int error_handler(sockaddr_nl*, nlmsgerr*, void*) noexcept;

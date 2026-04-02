@@ -2,10 +2,9 @@
 #define NLPP_WIFIDEVICE_HPP
 
 
-/**
- * @file WifiDevice.hpp
- * Contains the `WifiDevice` definition.
- */
+/// @file WifiDevice.hpp
+/// Contains the `WifiDevice` definition.
+
 
 #include "nlpp/nlpp.hpp"
 #include "nlpp/NetlinkRoute.hpp"
@@ -14,16 +13,11 @@
 #include <string>
 
 
-/**
- * @brief Let you easily put wlan adapter to monitor mode and change channels.
- * @pre Device must have an index!
- */
+/// @brief Let you easily put wlan adapter to monitor mode and change channels.
+/// @pre Device must have an index!
+///
 class WifiDevice
 {
-  nlpp::if_index_t     ifindex_;    // device index
-  nlpp::NetlinkRoute   nlroute_;    // connection to rtnl subsystem
-  nlpp::NetlinkGeneric nlgeneric_;  // connection to genl subsystem
-
 public:
 
   /// @brief Construct a device issuing a request directly to the kernel.
@@ -31,7 +25,7 @@ public:
   /// @param[in] if_type Interface type to set.
   WifiDevice(std::string const&, nlpp::if_type_e = {});
 
-// Getters
+// Getters / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Returns the device name retrieved from a `rtnl_link_t` object.
   [[nodiscard]] std::string get_name();
@@ -54,7 +48,7 @@ public:
   /// @brief Obtain the string representation.
   [[nodiscard]] std::string to_string();
 
-// Setters
+// Setters / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Set interface up through using a `rtnl_link_t` object.
   void put_up();
@@ -72,6 +66,12 @@ public:
 
   /// @brief Set the device channel frequency.
   void set_channel_freq(nlpp::channel_freq_t chan);
+
+private:
+
+  nlpp::if_index_t     ifindex_;    // this device index
+  nlpp::NetlinkRoute   nlroute_;    // connection to rtnl subsystem
+  nlpp::NetlinkGeneric nlgeneric_;  // connection to genl subsystem
 };
 
 

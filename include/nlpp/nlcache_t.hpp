@@ -2,10 +2,9 @@
 #define NLCACHE_HPP
 
 
-/**
- * @file nlcache_t.hpp
- * Contains the `nlcache_t` class definition.
- */
+/// @file nlcache_t.hpp
+/// Contains the `nlcache_t` class definition.
+
 
 #include "nlsocket_t.hpp"
 #include "rtnl_link_t.hpp"
@@ -19,18 +18,17 @@ namespace nlpp
 {
 
 
-/**
- * @brief Simple C++ wrapper around a `struct nl_cache` with RAII.
- *
- * This object represent a list of links in the kernel.
- *
- * @see https://www.infradead.org/~tgr/libnl/doc/route.html#_get_list
- */
+/// @brief Simple C++ wrapper around a `struct nl_cache` with RAII.
+/// This object represent a list of links in the kernel.
+/// 
+/// @see https://www.infradead.org/~tgr/libnl/doc/route.html#_get_list
+/// 
 class nlcache_t
 {
   struct nl_cache* cachePtr_{}; // underlying resource pointer
 
 public:
+
   /// @brief Construct a cache object of all links from the kernel.
   /// @param[in] family Address family to use.
   nlcache_t(nlsocket_t&, int family = AF_UNSPEC);
@@ -49,7 +47,7 @@ public:
   /// @returns The underlying managed pointer.
   [[nodiscard]] struct nl_cache* get_pointer() const noexcept;
 
-// libnl API ------------------------------------------------------------------/
+// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Retrieve a `rtnl_link_t`.
   /// @returns A `rtnl_link_t` object if found.
@@ -70,6 +68,7 @@ public:
   [[nodiscard]] std::optional<if_index_t> name2i(std::string_view ifname);
 
 private:
+
   /// @brief Custom swap helper. Prevents recursive call of `std::swap()`.
   void swap(nlcache_t& lhs, nlcache_t& rhs) noexcept
   {

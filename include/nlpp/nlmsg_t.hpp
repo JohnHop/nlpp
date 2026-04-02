@@ -2,10 +2,8 @@
 #define NLMSGT_HPP
 
 
-/** 
- * @file nlmsg_t.hpp
- * Contains the `nlmsg_t` class definition.
- */
+/// @file nlmsg_t.hpp
+/// Contains the `nlmsg_t` class definition.
 
 
 #include "nlattr_t.hpp"
@@ -20,15 +18,15 @@
 namespace nlpp {
 
 
-/**
- * @brief Simple C++ wrapper around a `struct nl_msg` with RAII resource 
- *        management.
- */
+/// @brief Simple C++ wrapper around a `struct nl_msg` with RAII resource 
+///        management.
+/// 
 class nlmsg_t
 {
   struct nl_msg* msgPtr_{}; // underlying pointer
 
 public:
+
   /// @brief Create a empty netlink message.
   /// @throws `std::system_error` with `ENOMEM` errno code.
   nlmsg_t();
@@ -53,7 +51,7 @@ public:
   /// @returns the underlying managed pointer.
   [[nodiscard]] struct nl_msg* get_pointer() const noexcept;
 
-// nl api wrappers ------------------------------------------------------------/
+// libnl api / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Put attribute into the message.
   /// @throw `std::runtime_error` When `nla_put_*()` call fail.
@@ -90,11 +88,15 @@ public:
   struct nlmsghdr* nlmsg_hdr() noexcept;
 
 private:
+
   /// @brief Custom swap helper. Prevents recursive call of `std::swap()`.
   friend void swap(nlmsg_t& lhs, nlmsg_t& rhs) noexcept {
     std::swap(lhs.msgPtr_, rhs.msgPtr_);
   }
-};
+};  // end class `nlmsg_t`
+
+
+// function template definitions / / / / / / / / / / / / / / / / / / / / / / / / 
 
 
 template <is_nlattr_t... Ts>

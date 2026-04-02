@@ -1,12 +1,10 @@
 #if !defined(NLUTILS_HPP)
 #define NLUTILS_HPP
 
-/**
- * @file nlpp.hpp
- * Contains common definitions used across by entities.
- *
- * fixme: this file msu called core.hpp or something
- */
+
+/// @file nlpp.hpp
+/// Contains common definitions used across by entities.
+// fixme: this file msu called core.hpp or something
 
 
 #include "StrongType.hpp"

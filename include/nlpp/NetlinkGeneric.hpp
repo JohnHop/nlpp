@@ -40,7 +40,7 @@ public:
   /// @throw `std::system_error` when `genl_ctrl_resolve()` call fails.
   NetlinkGeneric();
 
-// libnl API ------------------------------------------------------------------/
+// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Obtain information for a device.
   /// @param[in] if_index Interface index.
@@ -96,7 +96,7 @@ private:
   /// @note You can address commands to a device only through his index.
   void send_msg(nlmsg_t const& msg, nl_recvmsg_msg_cb_t = {}, void* = {});
 
-// Commands handlers callbacks
+// Commands handlers callbacks / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Callback to parse a `NL80211_CMD_GET_INTERFACE` response.
   static int get_interface_handler(struct nl_msg* msg, void* arg) noexcept;

@@ -2,10 +2,8 @@
 #define NLCBT_HPP
 
 
-/** 
- * @file nlcb_t.hpp
- * Contains the `nlcb_t` class definition.
- */
+/// @file nlcb_t.hpp
+/// Contains the `nlcb_t` class definition.
 
 
 #include <netlink/handlers.h>
@@ -13,22 +11,21 @@
 #include <utility>
 
 
-namespace nlpp
-{
+namespace nlpp {
 
 
-/**
- * @brief Simple C++ wrapper around a `struct nlcb_t` with RAII.
- *
- * For documentation:
- * @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_sk_cb
- * @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_cb
- */
+/// @brief Simple C++ wrapper around a `struct nlcb_t` with RAII.
+/// 
+/// For documentation:
+/// @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_sk_cb
+/// @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_cb
+/// 
 class nlcb_t
 {
   struct nl_cb* cbPtr_{}; // Underlying pointer
 
 public:
+
   /// @brief Default ctor. 
   nlcb_t() = default;
 
@@ -52,7 +49,7 @@ public:
   /// @returns The underlying managed pointer.
   [[nodiscard]] struct nl_cb* get_pointer() const noexcept;
 
-// nl api wrappers ------------------------------------------------------------/
+// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Set up a callback for this set.
   /// @param[in] t Callback type.
@@ -66,6 +63,7 @@ public:
   void err(enum nl_cb_kind k, nl_recvmsg_err_cb_t, void*);
 
 private:
+
   /// @brief Custom swap helper. Prevents recursive call of `std::swap()`.
   friend void swap(nlcb_t& lhs, nlcb_t& rhs) noexcept
   {
