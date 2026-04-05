@@ -4,6 +4,9 @@
 #include <format>
 
 
+namespace nlpp {
+
+
 WifiDevice::WifiDevice(std::string const& ifname, nlpp::if_type_e if_type)
 { 
   ifindex_ = nlroute_.get_kernel(ifname).index().value();
@@ -113,3 +116,6 @@ nlpp::dev_info_t WifiDevice::dev_info()
 {
   return nlgeneric_.get_interface(ifindex_);
 }
+
+
+};  // end namespace nlpp

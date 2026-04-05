@@ -13,6 +13,8 @@
 #include <string>
 
 
+namespace nlpp {
+
 /// @brief Let you easily put wlan adapter to monitor mode and change channels.
 /// @pre Device must have an index!
 ///
@@ -73,6 +75,9 @@ private:
   nlpp::NetlinkRoute   nlroute_;    // connection to rtnl subsystem
   nlpp::NetlinkGeneric nlgeneric_;  // connection to genl subsystem
 };
+
+
+};  // end namespace nlpp
 
 
 #endif // NLPP_WIFIDEVICE_HPP
