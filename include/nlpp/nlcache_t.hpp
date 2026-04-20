@@ -2,8 +2,10 @@
 #define NLCACHE_HPP
 
 
-/// @file nlcache_t.hpp
-/// Contains the `nlcache_t` class definition.
+/** 
+ * @file nlcache_t.hpp
+ * Contains the `nlcache_t` class definition.
+ */
 
 
 #include "nlsocket_t.hpp"
@@ -14,15 +16,14 @@
 #include <netlink/cache.h>
 
 
-namespace nlpp
-{
+namespace nlpp {
 
 
-/// @brief Simple C++ wrapper around a `struct nl_cache` with RAII.
-/// This object represent a list of links in the kernel.
-/// 
-/// @see https://www.infradead.org/~tgr/libnl/doc/route.html#_get_list
-/// 
+/** @brief Simple C++ wrapper around a `struct nl_cache` with RAII.
+ * This object represent a list of links in the kernel.
+ * 
+ * @see https://www.infradead.org/~tgr/libnl/doc/route.html#_get_list
+ */
 class nlcache_t
 {
   struct nl_cache* cachePtr_{}; // underlying resource pointer

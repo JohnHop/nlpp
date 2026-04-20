@@ -17,6 +17,7 @@ class StrongType : private Skills<StrongType<Type, Tag, Skills...>>...
   Type value_;
 
 public:
+
   using value_type      = Type;               ///< Type
   using reference       = value_type &;       ///< Type&
   using const_reference = value_type const &; ///< Type const&

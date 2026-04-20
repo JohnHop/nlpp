@@ -2,8 +2,10 @@
 #define NLCBT_HPP
 
 
-/// @file nlcb_t.hpp
-/// Contains the `nlcb_t` class definition.
+/** 
+ * @file nlcb_t.hpp
+ * Contains the `nlcb_t` class definition.
+ */
 
 
 #include <netlink/handlers.h>
@@ -14,12 +16,12 @@
 namespace nlpp {
 
 
-/// @brief Simple C++ wrapper around a `struct nlcb_t` with RAII.
-/// 
-/// For documentation:
-/// @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_sk_cb
-/// @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_cb
-/// 
+/** @brief Simple C++ wrapper around a `struct nlcb_t` with RAII.
+ * 
+ * For documentation:
+ * @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_sk_cb
+ * @see https://www.infradead.org/~tgr/libnl/doc/core.html#core_cb
+ */ 
 class nlcb_t
 {
   struct nl_cb* cbPtr_{}; // Underlying pointer

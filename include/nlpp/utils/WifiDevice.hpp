@@ -2,8 +2,10 @@
 #define NLPP_WIFIDEVICE_HPP
 
 
-/// @file WifiDevice.hpp
-/// Contains the `WifiDevice` definition.
+/** 
+ * @file WifiDevice.hpp
+ * Contains the `WifiDevice` definition.
+ */
 
 
 #include "nlpp/nlpp.hpp"
@@ -15,9 +17,11 @@
 
 namespace nlpp {
 
-/// @brief Let you easily put wlan adapter to monitor mode and change channels.
-/// @pre Device must have an index!
-///
+
+/** 
+ * @brief Let you easily put wlan adapter to monitor mode and change channels.
+ * @pre Device must have an index!
+ */
 class WifiDevice
 {
 public:
@@ -30,19 +34,19 @@ public:
 // Getters / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   /// @brief Returns the device name retrieved from a `rtnl_link_t` object.
-  [[nodiscard]] std::string get_name();
+  [[nodiscard]] std::string name();
 
   /// @brief Get link status fom a `rtnl_link_t` obj and returns if it is UP.
   [[nodiscard]] bool is_up() noexcept;
 
   /// @brief Retrieve the interface type from a `rtnl_link_t` object.
-  [[nodiscard]] nlpp::if_type_e get_type();
+  [[nodiscard]] nlpp::if_type_e type();
 
   /// @brief Retrieve the frequency.
-  [[nodiscard]] std::optional<nlpp::frequency_t> get_frequency();
+  [[nodiscard]] std::optional<nlpp::frequency_t> frequency();
 
   /// @brief Retrieve the channel frequency.
-  [[nodiscard]] std::optional<nlpp::channel_freq_t> get_channel();
+  [[nodiscard]] std::optional<nlpp::channel_freq_t> channel();
 
   /// @brief Obtain the associated `dev_info_t` to this interface.
   [[nodiscard]] nlpp::dev_info_t dev_info();

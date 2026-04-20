@@ -27,20 +27,18 @@ namespace nlpp {
  * Mapping function details:
  * - `get_interface()` -> `iw dev <devname> info`
  * - `get_list_interfaces()` -> `iw dev`
- * - `set_type()` -> `iw dev <devname> set type <type>`
- * - `set_channel()` -> `iw dev <devname> set channel <channel>`
+ * - `set_if_type()` -> `iw dev <devname> set type <type>`
+ * - `set_if_channel()` -> `iw dev <devname> set channel <channel>`
  */
 class NetlinkGeneric
 {
-  nlsocket_t socket_; // used to connect to genl service
-  int nl80211_id;
-
 public:
+
   /// @brief Default ctor. Connect to Netlink Generic subsystem.
   /// @throw `std::system_error` when `genl_ctrl_resolve()` call fails.
   NetlinkGeneric();
 
-// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Obtain information for a device.
   /// @param[in] if_index Interface index.
@@ -96,7 +94,7 @@ private:
   /// @note You can address commands to a device only through his index.
   void send_msg(nlmsg_t const& msg, nl_recvmsg_msg_cb_t = {}, void* = {});
 
-// Commands handlers callbacks / / / / / / / / / / / / / / / / / / / / / / / / /
+//* Commands handlers callbacks / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Callback to parse a `NL80211_CMD_GET_INTERFACE` response.
   static int get_interface_handler(struct nl_msg* msg, void* arg) noexcept;
@@ -106,6 +104,11 @@ private:
   
   /// @brief Callback to parse a `NL80211_CMD_GET_WIPHY` response.
   static int get_phy_handler(struct nl_msg* msg, void* arg) noexcept;
+
+//* Representation
+
+  nlsocket_t socket_; // used to connect to genl service
+  int nl80211_id_;
 };
 
 

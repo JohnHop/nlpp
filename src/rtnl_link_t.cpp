@@ -15,8 +15,11 @@ rtnl_link_t::rtnl_link_t()
 : linkPtr_{rtnl_link_alloc()}
 {
   if(!linkPtr_) {
-    throw std::system_error{ENOMEM, std::system_category(), 
-      "unable to allocate rtnl link"};
+    throw 
+      std::system_error{
+        ENOMEM, 
+        std::system_category(), 
+        "unable to allocate rtnl link"};
   }
 }
 
@@ -39,8 +42,8 @@ rtnl_link_t::rtnl_link_t(rtnl_link_t&& other) noexcept
 
 rtnl_link_t& rtnl_link_t::operator=(rtnl_link_t&& rhs) noexcept
 {
-  rtnl_link_t move{std::move(rhs)};
-  swap(*this, move);
+  rtnl_link_t moved{std::move(rhs)};
+  swap(*this, moved);
 
   return *this;
 }
@@ -55,7 +58,7 @@ rtnl_link_t::~rtnl_link_t()
 
 struct rtnl_link* rtnl_link_t::get_pointer() const noexcept 
 { 
-  return this->linkPtr_;
+  return linkPtr_;
 }
 
 
@@ -63,11 +66,13 @@ std::string rtnl_link_t::to_string()
 {
   auto index = this->index();
 
-  return std::format("name: {}, index: {}, flags: {}, state: {}",
-    this->name(),
-    index.has_value() ? std::to_string(index.value().get()) : "",
-    "{" + ::to_string(this->flags()) + "}",
-    ::to_string(this->operstate()));
+  return 
+    std::format(
+      "name: {}, index: {}, flags: {}, state: {}",
+      this->name(),
+      index.has_value() ? std::to_string(index.value().get()) : "",
+      "{" + ::to_string(this->flags()) + "}",
+      ::to_string(this->operstate()) );
 }
 
 

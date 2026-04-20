@@ -2,8 +2,10 @@
 #define NETLINKROUTE_HPP
 
 
-/// @file NetlinkRoute.hpp
-/// Contains the `NetlinkRoute` class definition.
+/**
+ * @file NetlinkRoute.hpp
+ * Contains the `NetlinkRoute` class definition.
+ */
 
 
 #include "nlpp.hpp"
@@ -11,23 +13,21 @@
 #include "rtnl_link_t.hpp"
 
 
-namespace nlpp
-{
+namespace nlpp {
 
 
-/// @brief Utility used to obtain link object (`rtnl_link_t`) and change link
-///        status (es. `up` o `down` flag).
-/// 
+/** 
+ * @brief Utility used to obtain link object (`rtnl_link_t`) and change link
+ *        status (es. `up` o `down` flag).
+ */ 
 class NetlinkRoute
 {
-  nlsocket_t socket_; // to connect to routing subsystem
-
 public:
 
   /// @brief Connect to the Netlink Route subsystem.
   NetlinkRoute();
 
-// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Obtain a link object representing a device from his index.
   /// @param[in] ifindex Interface index identifier.
@@ -47,6 +47,10 @@ public:
   /// @param[in] flags Optional flags.
   /// @throws `std::runtime_error` when `rtnl_link_change()` call fails.
   void link_change(rtnl_link_t& origin, rtnl_link_t& change, int flags = 0);
+
+private:
+
+  nlsocket_t socket_; // to connect to the routing subsystem
 };
 
 

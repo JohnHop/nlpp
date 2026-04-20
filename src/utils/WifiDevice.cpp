@@ -21,7 +21,7 @@ WifiDevice::WifiDevice(std::string const& ifname, nlpp::if_type_e if_type)
 }
 
 
-std::string WifiDevice::get_name()
+std::string WifiDevice::name()
 {
 
   return nlroute_.get_kernel(ifindex_).name();
@@ -35,14 +35,14 @@ bool WifiDevice::is_up() noexcept
 }
 
 
-nlpp::if_type_e WifiDevice::get_type()
+nlpp::if_type_e WifiDevice::type()
 {
   // FIXME: always check optionals!
   return nlgeneric_.get_interface(nlroute_.get_kernel(ifindex_).index().value()).type;
 }
 
 
-std::optional<nlpp::frequency_t> WifiDevice::get_frequency()
+std::optional<nlpp::frequency_t> WifiDevice::frequency()
 {
   auto frequency = nlgeneric_.get_interface(
     nlroute_.get_kernel(ifindex_).index().value()).wiphy_freq;
@@ -51,7 +51,7 @@ std::optional<nlpp::frequency_t> WifiDevice::get_frequency()
 }
 
 
-std::optional<nlpp::channel_freq_t> WifiDevice::get_channel()
+std::optional<nlpp::channel_freq_t> WifiDevice::channel()
 {
   auto frequency = nlgeneric_.get_interface(
     nlroute_.get_kernel(ifindex_).index().value()).wiphy_freq;

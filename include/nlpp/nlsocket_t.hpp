@@ -2,8 +2,10 @@
 #define NLSOCKET_H
 
 
-/// @file nlsocket_t.hpp
-/// Contains the `nlsocket_t` class definition.
+/** 
+ * @file nlsocket_t.hpp
+ * Contains the `nlsocket_t` class definition.
+ */
 
 
 #include "nlpp.hpp"
@@ -18,8 +20,9 @@
 namespace nlpp {
 
 
-/// @brief Simple C++ wrapper around a `struct nl_sock` with RAII. 
-/// 
+/**
+ * @brief Simple C++ wrapper around a `struct nl_sock` with RAII. 
+ */
 class nlsocket_t
 {
   struct nl_sock* socketPtr_{}; // Underlying pointer

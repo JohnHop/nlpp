@@ -2,9 +2,11 @@
 #define NLMSGT_HPP
 
 
-/// @file nlmsg_t.hpp
-/// Contains the `nlmsg_t` class definition.
-
+/** 
+ * @file nlmsg_t.hpp
+ * Contains the `nlmsg_t` class definition.
+ */
+ 
 
 #include "nlattr_t.hpp"
 
@@ -18,9 +20,9 @@
 namespace nlpp {
 
 
-/// @brief Simple C++ wrapper around a `struct nl_msg` with RAII resource 
-///        management.
-/// 
+/** 
+ * @brief Simple C++ wrapper around a `struct nl_msg` with RAII.
+ */
 class nlmsg_t
 {
   struct nl_msg* msgPtr_{}; // underlying pointer

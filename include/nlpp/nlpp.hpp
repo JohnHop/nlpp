@@ -2,16 +2,18 @@
 #define NLUTILS_HPP
 
 
-/// @file nlpp.hpp
-/// Contains common definitions used across by entities.
-// fixme: this file msu called core.hpp or something
+/** 
+ * @file nlpp.hpp
+ * Contains common definitions used across by entities.
+ */
+// fixme: this file should be called core.hpp or something
 
 
 #include "StrongType.hpp"
 
 #include <net/if.h>
-#include <linux/nl80211.h>
 #include <netlink/socket.h>
+#include <linux/nl80211.h>
 #include <linux/netlink.h>
 
 #include <string_view>
@@ -301,7 +303,9 @@ enum class nl80211_command_e
 
 
 /// @brief Helper struct containing some device info.
-/// @note Obtained with a NetlinkGeneric::get_interface() call.
+/// @note Obtained with the `NetlinkGeneric::get_interface()` call.
+/// @details
+/// If `wiphy_freq` has no value, then the wlan is not set to monitor mode.
 struct dev_info_t
 {
   if_index_t                  if_index;      ///< NL80211_ATTR_IFINDEX
@@ -313,16 +317,6 @@ struct dev_info_t
   wiphy_index_t               wiphy_index;   ///< NL80211_ATTR_WIPHY
   std::optional<frequency_t>  wiphy_freq;    ///< NL80211_ATTR_WIPHY_FREQ
   int                         channel_width; ///< NL80211_ATTR_CHANNEL_WIDTH
-
-  /// @brief Compares two `dev_info_t`.
-  /// @param[in] lhs Left operand to compare.
-  /// @param[in] rhs Right operand to compare.
-  /// @returns True only if `lhs` and `rhs` are the same device.
-  [[nodiscard]] friend 
-  bool operator==(dev_info_t const& lhs, dev_info_t const& rhs) noexcept
-  {
-    return lhs.if_index == rhs.if_index || lhs.if_name == rhs.if_name;
-  }
 };
 
 
