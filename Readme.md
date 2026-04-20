@@ -14,7 +14,7 @@ High Level Classes provide more generic functionality, such as obtaining device 
 
 ### Netlink Generic
 
-`NetlinkGeneric` methods are mapped to some `iw` commands:
+`NetlinkGeneric` is the most useful class and its methods are mapped to some `iw` commands:
 
 | Method                                  | Command                                  | Description                          |
 | ----------------------------------------| -----------------------------------------| -------------------------------------|
@@ -30,4 +30,4 @@ High Level Classes provide more generic functionality, such as obtaining device 
 
 You can find usage examples in the `test/` directory.
 
-The utility class `WifiDevice` is an example of the use of this library.
+The utility class `WifiDevice` demonstrates most of this library functionalities and also provides usage examples. Use it as a reference.
