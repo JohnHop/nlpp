@@ -362,7 +362,7 @@ struct dev_capability_t
 };
 
 
-// Helper functions -----------------------------------------------------------/
+// Helper functions / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
 /// @brief Translation from operational status code to std::string.
 /// @param[in] operstate An operational state.
@@ -407,7 +407,7 @@ struct dev_capability_t
 /// @note From `phy_lookup()` from `iw.c` source code.
 [[nodiscard]] if_index_t phy_lookup(std::string_view phy_name);
 
-// Utilities ------------------------------------------------------------------/
+// Utilities / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 /// @brief Convert a frequency to channel index.
 /// @param[in] freq A wireless frequency.

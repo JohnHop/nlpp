@@ -25,8 +25,6 @@ namespace nlpp {
  */
 class nlmsg_t
 {
-  struct nl_msg* msgPtr_{}; // underlying pointer
-
 public:
 
   /// @brief Create a empty netlink message.
@@ -53,7 +51,7 @@ public:
   /// @returns the underlying managed pointer.
   [[nodiscard]] struct nl_msg* get_pointer() const noexcept;
 
-// libnl api / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl api / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Put attribute into the message.
   /// @throw `std::runtime_error` When `nla_put_*()` call fail.
@@ -95,10 +93,14 @@ private:
   friend void swap(nlmsg_t& lhs, nlmsg_t& rhs) noexcept {
     std::swap(lhs.msgPtr_, rhs.msgPtr_);
   }
-};  // end class `nlmsg_t`
+
+//* Representation / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
+
+  struct nl_msg* msgPtr_{}; // underlying pointer
+};
 
 
-// function template definitions / / / / / / / / / / / / / / / / / / / / / / / / 
+//* function template definitions / / / / / / / / / / / / / / / / / / / / / / / 
 
 
 template <is_nlattr_t... Ts>

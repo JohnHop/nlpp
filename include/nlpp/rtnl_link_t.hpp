@@ -56,7 +56,7 @@ public:
   /// @returns The description of the rtnl link.
   [[nodiscard]] std::string to_string();
 
-//* libnl api / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Returns link name or an empty string if no name exists.
   /// @returns The link name is the name assigned to a network interface.
@@ -88,9 +88,9 @@ private:
     std::swap(lhs.linkPtr_, rhs.linkPtr_);
   }
 
-//* Representation
+//* Representation / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-  struct rtnl_link* linkPtr_{}; // Underlying pointer
+  struct rtnl_link* linkPtr_{}; // underlying pointer
 };
 
 

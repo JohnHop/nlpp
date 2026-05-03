@@ -24,8 +24,6 @@ namespace nlpp {
  */ 
 class nlcb_t
 {
-  struct nl_cb* cbPtr_{}; // Underlying pointer
-
 public:
 
   /// @brief Default ctor. 
@@ -51,7 +49,7 @@ public:
   /// @returns The underlying managed pointer.
   [[nodiscard]] struct nl_cb* get_pointer() const noexcept;
 
-// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Set up a callback for this set.
   /// @param[in] t Callback type.
@@ -71,6 +69,10 @@ private:
   {
     std::swap(lhs.cbPtr_, rhs.cbPtr_);
   }
+
+//* Representation
+
+  struct nl_cb* cbPtr_{}; // underlying pointer
 };
 
 

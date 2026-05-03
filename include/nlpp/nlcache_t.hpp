@@ -26,8 +26,6 @@ namespace nlpp {
  */
 class nlcache_t
 {
-  struct nl_cache* cachePtr_{}; // underlying resource pointer
-
 public:
 
   /// @brief Construct a cache object of all links from the kernel.
@@ -48,7 +46,7 @@ public:
   /// @returns The underlying managed pointer.
   [[nodiscard]] struct nl_cache* get_pointer() const noexcept;
 
-// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Retrieve a `rtnl_link_t`.
   /// @returns A `rtnl_link_t` object if found.
@@ -75,6 +73,10 @@ private:
   {
     std::swap(lhs.cachePtr_, rhs.cachePtr_);
   }  
+
+//* Representation / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+  struct nl_cache* cachePtr_{}; // underlying resource pointer
 };
 
 

@@ -25,10 +25,6 @@ namespace nlpp {
  */
 class nlsocket_t
 {
-  struct nl_sock* socketPtr_{}; // Underlying pointer
-  bool connected_{};  // Connection status
-  nlcb_t callback_;   // Callback to invoke after received a response
-
 public:
 
   /// @brief Default ctor. Allocate a nl socket.
@@ -58,7 +54,7 @@ public:
   [[nodiscard]] bool connected() const noexcept { return this->connected_; }
 
 
-// libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+//* libnl API / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
 
   /// @brief Connect to a netlink kernel subsystem using the socket.
@@ -90,9 +86,7 @@ private:
     std::swap(lhs.socketPtr_, rhs.socketPtr_);
   }
 
-
-// Netlink callbacks / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
+//* Netlink callbacks / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
   /// @brief Default error handler.
   static int error_handler(sockaddr_nl*, nlmsgerr*, void*) noexcept;
@@ -102,6 +96,12 @@ private:
 
   /// @brief default ack handler.
   static int ack_handler(nl_msg*, void*) noexcept;
+
+//* Representation / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+  struct nl_sock* socketPtr_{}; // Underlying pointer
+  bool connected_{};  // Connection status
+  nlcb_t callback_;   // Callback to invoke after received a response
 };
 
 
